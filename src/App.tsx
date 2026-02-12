@@ -10,7 +10,6 @@ import MindKeys from "./pages/MindKeys";
 import Lore from "./pages/Lore";
 import NotFound from "./pages/NotFound";
 import ParticleField from "./components/ParticleField";
-import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +35,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ParticleField />
-        <CustomCursor />
         <AnimatedRoutes />
       </BrowserRouter>
     </TooltipProvider>
