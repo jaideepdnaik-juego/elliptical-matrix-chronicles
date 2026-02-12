@@ -160,9 +160,9 @@ const SkillsShowcase = () => {
                   className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-40 group-hover:opacity-70 blur-xl transition-opacity duration-500`}
                 />
 
-                <div className="relative rounded-2xl bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-6 backdrop-blur-xl border border-white/10">
+                <div className="relative rounded-2xl bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-4 md:p-5 backdrop-blur-xl border border-white/10">
                   {/* Skill Image Container */}
-                  <div className="relative aspect-square mb-4 flex items-center justify-center">
+                  <div className="relative w-20 h-20 md:w-24 md:h-24 mx-auto mb-3 flex items-center justify-center">
                     <motion.div
                       animate={{
                         rotate: [0, 5, -5, 0],
