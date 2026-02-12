@@ -5,6 +5,8 @@ import CharactersPreview from "@/components/CharactersPreview";
 import SkillsShowcase from "@/components/SkillsShowcase";
 import MindKeysShowcase from "@/components/MindKeysShowcase";
 import GatherablesShowcase from "@/components/GatherablesShowcase";
+import LoreTrailerSection from "@/components/LoreTrailerSection";
+import PreregistrationCounter from "@/components/PreregistrationCounter";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
@@ -20,6 +22,8 @@ const Index = () => {
         <SkillsShowcase />
         <MindKeysShowcase />
         <GatherablesShowcase />
+        <LoreTrailerSection />
+        <PreregistrationCounter />
         <CTASection />
         <Footer />
       </div>

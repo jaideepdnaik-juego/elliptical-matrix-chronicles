@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logoImg from "@/assets/Elliptical Matrix_Title 1.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -27,11 +28,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           to="/"
-          className="font-display text-xl md:text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 via-purple-400 to-blue-300 bg-clip-text text-transparent text-glow-blue"
+          className="relative group"
         >
-          <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            iBOONKA!™
-          </motion.span>
+          <motion.img 
+            src={logoImg} 
+            alt="Elliptical Matrix" 
+            className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_30px_rgba(147,51,234,0.7)]"
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+          />
         </Link>
 
         {/* Desktop */}

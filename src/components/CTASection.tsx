@@ -25,16 +25,16 @@ const CTASection = () => {
       <motion.div
         animate={{
           scale: [1, 1.4, 1],
-          opacity: [0.2, 0.4, 0.2],
+          opacity: [0.3, 0.6, 0.3],
           x: [0, 50, 0],
         }}
         transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-red-500/30 to-orange-500/20 blur-3xl"
+        className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-red-500/40 to-orange-500/30 blur-3xl"
       />
       <motion.div
         animate={{
           scale: [1.2, 1, 1.2],
-          opacity: [0.25, 0.45, 0.25],
+          opacity: [0.35, 0.65, 0.35],
           x: [0, -50, 0],
         }}
         transition={{
@@ -43,7 +43,21 @@ const CTASection = () => {
           ease: "easeInOut",
           delay: 1,
         }}
-        className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/20 blur-3xl"
+        className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-purple-500/40 to-pink-500/30 blur-3xl"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.25, 0.5, 0.25],
+          y: [0, 30, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 8,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+        className="absolute bottom-1/4 left-1/2 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-yellow-500/30 to-amber-500/20 blur-3xl"
       />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
