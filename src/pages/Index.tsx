@@ -4,17 +4,20 @@ import StorySection from "@/components/StorySection";
 import CharactersPreview from "@/components/CharactersPreview";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <StorySection />
-      <CharactersPreview />
-      <CTASection />
-      <Footer />
-    </div>
+    <PageTransition>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <HeroSection />
+        <StorySection />
+        <CharactersPreview />
+        <CTASection />
+        <Footer />
+      </div>
+    </PageTransition>
   );
 };
 
