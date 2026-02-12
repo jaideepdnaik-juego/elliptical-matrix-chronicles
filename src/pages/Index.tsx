@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import StorySection from "@/components/StorySection";
 import CharactersPreview from "@/components/CharactersPreview";
+import SkillsShowcase from "@/components/SkillsShowcase";
+import MindKeysShowcase from "@/components/MindKeysShowcase";
+import GatherablesShowcase from "@/components/GatherablesShowcase";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
@@ -14,6 +17,9 @@ const Index = () => {
         <HeroSection />
         <StorySection />
         <CharactersPreview />
+        <SkillsShowcase />
+        <MindKeysShowcase />
+        <GatherablesShowcase />
         <CTASection />
         <Footer />
       </div>

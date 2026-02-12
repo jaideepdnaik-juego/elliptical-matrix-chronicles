@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,51 @@
 
 @layer base {
   :root {
-    --background: 230 25% 7%;
-    --foreground: 200 100% 95%;
+    --background: 245 45% 8%;
+    --foreground: 200 100% 98%;
 
-    --card: 230 30% 10%;
-    --card-foreground: 200 100% 95%;
+    --card: 245 40% 12%;
+    --card-foreground: 200 100% 98%;
 
-    --popover: 230 30% 10%;
-    --popover-foreground: 200 100% 95%;
+    --popover: 245 40% 12%;
+    --popover-foreground: 200 100% 98%;
 
-    --primary: 190 100% 50%;
-    --primary-foreground: 230 25% 7%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 230 30% 15%;
-    --secondary-foreground: 200 100% 90%;
+    --secondary: 280 70% 60%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 230 20% 14%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 245 30% 18%;
+    --muted-foreground: 220 20% 65%;
 
-    --accent: 350 85% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 100% 65%;
+    --accent-foreground: 245 45% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 230 30% 18%;
-    --input: 230 30% 18%;
-    --ring: 190 100% 50%;
+    --border: 245 35% 22%;
+    --input: 245 35% 22%;
+    --ring: 210 100% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    --sidebar-background: 230 25% 7%;
-    --sidebar-foreground: 200 100% 95%;
-    --sidebar-primary: 190 100% 50%;
-    --sidebar-primary-foreground: 230 25% 7%;
-    --sidebar-accent: 230 30% 15%;
-    --sidebar-accent-foreground: 200 100% 90%;
-    --sidebar-border: 230 30% 18%;
-    --sidebar-ring: 190 100% 50%;
+    --sidebar-background: 245 45% 8%;
+    --sidebar-foreground: 200 100% 98%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 245 35% 18%;
+    --sidebar-accent-foreground: 200 100% 95%;
+    --sidebar-border: 245 35% 22%;
+    --sidebar-ring: 210 100% 60%;
 
-    /* Custom tokens */
-    --glow-cyan: 190 100% 50%;
-    --glow-crimson: 350 85% 50%;
-    --surface-glass: 230 30% 12%;
+    /* Genshin-inspired custom tokens */
+    --glow-blue: 210 100% 60%;
+    --glow-purple: 280 70% 60%;
+    --glow-gold: 45 100% 65%;
+    --glow-crimson: 350 85% 55%;
+    --surface-glass: 245 40% 15%;
   }
 }
 
@@ -60,11 +62,26 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
     scroll-behavior: smooth;
+    background: linear-gradient(
+      135deg,
+      hsl(245 45% 8%) 0%,
+      hsl(260 50% 12%) 40%,
+      hsl(245 45% 8%) 70%,
+      hsl(220 60% 10%) 100%
+    );
+    background-attachment: fixed;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
 
@@ -77,32 +94,96 @@
 }
 
 @layer utilities {
+  .text-glow-blue {
+    text-shadow:
+      0 0 20px hsl(210 100% 60% / 0.8),
+      0 0 40px hsl(210 100% 60% / 0.4),
+      0 0 60px hsl(210 100% 60% / 0.2);
+  }
+
   .text-glow-cyan {
-    text-shadow: 0 0 20px hsl(190 100% 50% / 0.6), 0 0 40px hsl(190 100% 50% / 0.3);
+    text-shadow:
+      0 0 20px hsl(190 100% 50% / 0.6),
+      0 0 40px hsl(190 100% 50% / 0.3);
+  }
+
+  .text-glow-purple {
+    text-shadow:
+      0 0 20px hsl(280 70% 60% / 0.8),
+      0 0 40px hsl(280 70% 60% / 0.4);
+  }
+
+  .text-glow-gold {
+    text-shadow:
+      0 0 20px hsl(45 100% 65% / 0.8),
+      0 0 40px hsl(45 100% 65% / 0.4),
+      0 0 60px hsl(45 100% 65% / 0.2);
   }
 
   .text-glow-crimson {
-    text-shadow: 0 0 20px hsl(350 85% 50% / 0.6), 0 0 40px hsl(350 85% 50% / 0.3);
+    text-shadow:
+      0 0 20px hsl(350 85% 50% / 0.6),
+      0 0 40px hsl(350 85% 50% / 0.3);
   }
 
   .bg-glass {
-    background: hsl(230 30% 12% / 0.6);
-    backdrop-filter: blur(16px);
-    border: 1px solid hsl(190 100% 50% / 0.1);
+    background: linear-gradient(
+      135deg,
+      hsl(245 40% 15% / 0.4) 0%,
+      hsl(260 45% 18% / 0.3) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(210 100% 60% / 0.15);
+  }
+
+  .bg-glass-gold {
+    background: linear-gradient(
+      135deg,
+      hsl(45 80% 50% / 0.1) 0%,
+      hsl(30 70% 45% / 0.05) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(45 100% 65% / 0.2);
   }
 
   .glow-border {
-    box-shadow: 0 0 15px hsl(190 100% 50% / 0.15), inset 0 0 15px hsl(190 100% 50% / 0.05);
-    border: 1px solid hsl(190 100% 50% / 0.2);
+    box-shadow:
+      0 0 20px hsl(210 100% 60% / 0.25),
+      0 0 40px hsl(210 100% 60% / 0.15),
+      inset 0 0 20px hsl(210 100% 60% / 0.08);
+    border: 1px solid hsl(210 100% 60% / 0.3);
+  }
+
+  .glow-border-purple {
+    box-shadow:
+      0 0 20px hsl(280 70% 60% / 0.25),
+      0 0 40px hsl(280 70% 60% / 0.15),
+      inset 0 0 20px hsl(280 70% 60% / 0.08);
+    border: 1px solid hsl(280 70% 60% / 0.3);
+  }
+
+  .glow-border-gold {
+    box-shadow:
+      0 0 20px hsl(45 100% 65% / 0.3),
+      0 0 40px hsl(45 100% 65% / 0.2),
+      inset 0 0 20px hsl(45 100% 65% / 0.1);
+    border: 1px solid hsl(45 100% 65% / 0.4);
   }
 
   .crimson-glow-border {
-    box-shadow: 0 0 15px hsl(350 85% 50% / 0.15), inset 0 0 15px hsl(350 85% 50% / 0.05);
+    box-shadow:
+      0 0 15px hsl(350 85% 50% / 0.15),
+      inset 0 0 15px hsl(350 85% 50% / 0.05);
     border: 1px solid hsl(350 85% 50% / 0.2);
   }
 
   .hero-gradient {
-    background: linear-gradient(180deg, transparent 0%, hsl(230 25% 7% / 0.3) 40%, hsl(230 25% 7%) 100%);
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(230 25% 7% / 0.3) 40%,
+      hsl(230 25% 7%) 100%
+    );
   }
 }
 
@@ -126,16 +207,31 @@
 
 /* Starfield animation */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(190 100% 50% / 0.2); }
-  50% { box-shadow: 0 0 40px hsl(190 100% 50% / 0.5); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(190 100% 50% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(190 100% 50% / 0.5);
+  }
 }

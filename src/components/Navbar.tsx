@@ -18,11 +18,17 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+      }}
       className="fixed top-0 left-0 right-0 z-50 bg-glass"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-display text-xl md:text-2xl font-bold tracking-wider text-primary text-glow-cyan">
+        <Link
+          to="/"
+          className="font-display text-xl md:text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 via-purple-400 to-blue-300 bg-clip-text text-transparent text-glow-blue"
+        >
           <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             iBOONKA!™
           </motion.span>
@@ -31,26 +37,26 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="relative group"
-            >
+            <Link key={link.to} to={link.to} className="relative group">
               <span
                 className={`font-display text-sm tracking-widest uppercase transition-all duration-300 ${
-                  location.pathname === link.to ? "text-primary text-glow-cyan" : "text-muted-foreground hover:text-primary"
+                  location.pathname === link.to
+                    ? "text-primary text-glow-blue"
+                    : "text-muted-foreground hover:text-primary"
                 }`}
               >
                 {link.label}
               </span>
               {/* Animated underline */}
               <motion.span
-                className="absolute -bottom-1 left-0 h-[2px] bg-primary"
+                className="absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500"
                 initial={false}
-                animate={{ width: location.pathname === link.to ? "100%" : "0%" }}
+                animate={{
+                  width: location.pathname === link.to ? "100%" : "0%",
+                }}
                 transition={{ duration: 0.3 }}
               />
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-primary/50 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-400/50 to-purple-400/50 group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
         </div>
@@ -87,7 +93,9 @@ const Navbar = () => {
                     to={link.to}
                     onClick={() => setIsOpen(false)}
                     className={`font-display text-sm tracking-widest uppercase ${
-                      location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                      location.pathname === link.to
+                        ? "text-primary"
+                        : "text-muted-foreground"
                     }`}
                   >
                     {link.label}

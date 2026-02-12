@@ -30,14 +30,19 @@ const ParticleField = () => {
     window.addEventListener("resize", resize);
 
     const colors = [
-      "0, 200, 255",   // cyan
-      "255, 60, 80",   // crimson
-      "150, 120, 255", // purple
-      "255, 255, 255", // white
+      "96, 165, 250", // blue-400
+      "167, 139, 250", // purple-400
+      "251, 191, 36", // amber-400
+      "255, 182, 193", // light pink
+      "147, 197, 253", // blue-300
+      "196, 181, 253", // purple-300
     ];
 
     // Create particles
-    const count = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 15000));
+    const count = Math.min(
+      80,
+      Math.floor((window.innerWidth * window.innerHeight) / 15000),
+    );
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -69,7 +74,14 @@ const ParticleField = () => {
 
         // Glow
         ctx.beginPath();
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        const gradient = ctx.createRadialGradient(
+          p.x,
+          p.y,
+          0,
+          p.x,
+          p.y,
+          p.size * 4,
+        );
         gradient.addColorStop(0, `rgba(${p.color}, ${currentOpacity})`);
         gradient.addColorStop(1, `rgba(${p.color}, 0)`);
         ctx.fillStyle = gradient;
@@ -89,7 +101,7 @@ const ParticleField = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(0, 200, 255, ${0.06 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(96, 165, 250, ${0.08 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(particles[j].x, particles[j].y);
