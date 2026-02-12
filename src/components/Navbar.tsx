@@ -23,7 +23,7 @@ const Navbar = () => {
         duration: 0.8,
         ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       }}
-      className="fixed top-0 left-0 right-0 z-50 bg-glass"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/20 backdrop-blur-md border-b border-white/5"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
