@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { Sparkles, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 import TextReveal from "./TextReveal";
 
-// Import skill icons
 import earthquakeStompImg from "@/assets/Skills/earthquake stomp.png";
 import jumpImg from "@/assets/Skills/jump.png";
 import runImg from "@/assets/Skills/run.png";
@@ -11,88 +10,22 @@ import thunderEnergyImg from "@/assets/Skills/thunderEnergy blast.png";
 import ultimateImg from "@/assets/Skills/ultimate.png";
 
 const skills = [
-  {
-    name: "Earthquake Stomp",
-    image: earthquakeStompImg,
-    description: "Devastate enemies with seismic power",
-    color: "from-amber-500 via-orange-500 to-red-500",
-    glow: "shadow-[0_0_50px_hsl(30_100%_50%/0.4)]",
-  },
-  {
-    name: "Thunder Energy",
-    image: thunderEnergyImg,
-    description: "Unleash electrical devastation",
-    color: "from-blue-400 via-cyan-400 to-teal-400",
-    glow: "shadow-[0_0_50px_hsl(180_100%_50%/0.4)]",
-  },
-  {
-    name: "Telekinesis",
-    image: telekinesisImg,
-    description: "Manipulate reality itself",
-    color: "from-purple-500 via-pink-500 to-rose-500",
-    glow: "shadow-[0_0_50px_hsl(300_100%_50%/0.4)]",
-  },
-  {
-    name: "Super Jump",
-    image: jumpImg,
-    description: "Defy gravity and soar",
-    color: "from-green-400 via-emerald-400 to-teal-400",
-    glow: "shadow-[0_0_50px_hsl(160_100%_50%/0.4)]",
-  },
-  {
-    name: "Speed Run",
-    image: runImg,
-    description: "Move at lightning speed",
-    color: "from-yellow-400 via-orange-400 to-amber-400",
-    glow: "shadow-[0_0_50px_hsl(45_100%_50%/0.4)]",
-  },
-  {
-    name: "Ultimate Power",
-    image: ultimateImg,
-    description: "Channel the cosmic force",
-    color: "from-violet-500 via-purple-500 to-fuchsia-500",
-    glow: "shadow-[0_0_60px_hsl(280_100%_60%/0.5)]",
-  },
+  { name: "Earthquake Stomp", image: earthquakeStompImg, description: "Devastate enemies with seismic power", color: "from-accent to-amber-400" },
+  { name: "Thunder Energy", image: thunderEnergyImg, description: "Unleash electrical devastation", color: "from-primary to-neon-cyan" },
+  { name: "Telekinesis", image: telekinesisImg, description: "Manipulate reality itself", color: "from-secondary to-energy-purple" },
+  { name: "Super Jump", image: jumpImg, description: "Defy gravity and soar", color: "from-emerald-400 to-teal-400" },
+  { name: "Speed Run", image: runImg, description: "Move at lightning speed", color: "from-accent to-orange-400" },
+  { name: "Ultimate Power", image: ultimateImg, description: "Channel the cosmic force", color: "from-secondary to-primary" },
 ];
 
 const SkillsShowcase = () => {
   return (
     <section className="section-padding relative overflow-hidden">
-      {/* Vibrant background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.3, 0.15],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-orange-500/30 to-red-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.35, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-purple-500/30 to-pink-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-gradient-to-br from-cyan-500/25 to-blue-500/15 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.06, 0.12, 0.06] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[120px]"
         />
       </div>
 
@@ -102,18 +35,18 @@ const SkillsShowcase = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-3"
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            <Zap className="w-5 h-5 text-orange-400" />
-            <p className="font-display text-sm tracking-[0.3em] uppercase bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            <Zap className="w-4 h-4 text-accent" />
+            <p className="font-display text-xs tracking-[0.4em] uppercase text-accent text-glow-gold">
               Power Unleashed
             </p>
-            <Zap className="w-5 h-5 text-orange-400" />
+            <Zap className="w-4 h-4 text-accent" />
           </motion.div>
 
           <TextReveal
             as="h2"
-            className="font-display text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent mb-6 text-glow-purple"
+            className="font-display text-4xl md:text-6xl font-bold bg-gradient-to-r from-accent via-golden-energy to-primary bg-clip-text text-transparent mb-6"
           >
             Master Epic Skills
           </TextReveal>
@@ -123,10 +56,9 @@ const SkillsShowcase = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-foreground/80 max-w-2xl mx-auto"
           >
-            Harness devastating abilities and cosmic powers. Each Oracle
-            commands unique skills that reshape reality.
+            Harness devastating abilities and cosmic powers. Each Oracle commands unique skills that reshape reality.
           </motion.p>
         </div>
 
@@ -137,84 +69,29 @@ const SkillsShowcase = () => {
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.6,
-                delay: i * 0.1,
-                type: "spring",
-                bounce: 0.4,
-              }}
-              className="group relative"
+              transition={{ duration: 0.6, delay: i * 0.1, type: "spring", bounce: 0.4 }}
+              whileHover={{ scale: 1.05, y: -8 }}
+              className="group"
             >
-              <motion.div
-                whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  rotateX: -5,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative rounded-2xl p-1 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm"
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {/* Animated gradient border */}
-                <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-40 group-hover:opacity-70 blur-xl transition-opacity duration-500`}
-                />
+              <div className="relative rounded-2xl p-1">
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${skill.color} opacity-20 group-hover:opacity-40 blur-xl transition-opacity duration-500`} />
 
-                <div className="relative rounded-2xl bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-4 md:p-5 backdrop-blur-xl border border-white/10">
-                  {/* Skill Image Container */}
-                  <div className="relative w-20 h-20 md:w-24 md:h-24 mx-auto mb-3 flex items-center justify-center">
-                    <motion.div
-                      animate={{
-                        rotate: [0, 5, -5, 0],
-                      }}
-                      transition={{
-                        duration: 6,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className={`absolute inset-0 rounded-xl bg-gradient-to-br ${skill.color} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500`}
-                    />
-
+                <div className="relative rounded-2xl bg-glass p-4 md:p-5 border border-border/50 group-hover:border-primary/30 transition-all duration-300">
+                  <div className="relative w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 flex items-center justify-center">
                     <motion.img
                       src={skill.image}
                       alt={skill.name}
                       className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
-                      whileHover={{
-                        scale: 1.1,
-                        filter: "brightness(1.2)",
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 15,
-                      }}
+                      whileHover={{ scale: 1.1, filter: "brightness(1.2)" }}
+                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     />
-
-                    {/* Sparkle effect on hover */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileHover={{ opacity: 1, scale: 1 }}
-                      className="absolute top-2 right-2"
-                    >
-                      <Sparkles
-                        className={`w-6 h-6 bg-gradient-to-br ${skill.color} bg-clip-text text-transparent`}
-                      />
-                    </motion.div>
                   </div>
-
-                  {/* Skill Name */}
-                  <h3
-                    className={`font-display text-lg font-bold mb-2 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}
-                  >
+                  <h3 className={`font-display text-sm md:text-base font-bold mb-1 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent text-center`}>
                     {skill.name}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                    {skill.description}
-                  </p>
+                  <p className="text-xs text-muted-foreground text-center">{skill.description}</p>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>

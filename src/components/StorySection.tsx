@@ -1,40 +1,32 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Sparkles, Globe, Zap, Orbit, Stars } from "lucide-react";
+import { Globe, Zap, Orbit, Stars } from "lucide-react";
 import TextReveal from "./TextReveal";
 
 const worlds = [
   {
     name: "Future Earth",
-    description:
-      "New York, London, China, California — the familiar world, reshaped by cosmic forces.",
+    description: "New York, London, China, California — the familiar world, reshaped by cosmic forces.",
     icon: Globe,
-    color: "from-blue-500 via-cyan-500 to-teal-500",
-    hoverGlow: "shadow-[0_0_50px_hsl(180_100%_50%/0.4)]",
+    color: "from-primary to-neon-cyan",
   },
   {
     name: "Dyna World",
-    description:
-      "A realm of raw elemental power, where energy storms forge the strongest warriors.",
+    description: "A realm of raw elemental power, where energy storms forge the strongest warriors.",
     icon: Zap,
-    color: "from-yellow-400 via-orange-500 to-red-500",
-    hoverGlow: "shadow-[0_0_50px_hsl(30_100%_50%/0.4)]",
+    color: "from-accent to-amber-400",
   },
   {
     name: "Mysterium Tremendum",
-    description:
-      "An ancient dimension cloaked in mystery, where time flows in spirals.",
+    description: "An ancient dimension cloaked in mystery, where time flows in spirals.",
     icon: Orbit,
-    color: "from-purple-500 via-violet-500 to-fuchsia-500",
-    hoverGlow: "shadow-[0_0_50px_hsl(280_100%_60%/0.4)]",
+    color: "from-secondary to-energy-purple",
   },
   {
     name: "BOONKA! Land",
-    description:
-      "The vibrant home of iBOONKA! — a world where imagination becomes reality.",
+    description: "The vibrant home of iBOONKA! — a world where imagination becomes reality.",
     icon: Stars,
-    color: "from-pink-400 via-rose-500 to-red-500",
-    hoverGlow: "shadow-[0_0_50px_hsl(350_100%_60%/0.4)]",
+    color: "from-rose-500 to-red-400",
   },
 ];
 
@@ -44,44 +36,26 @@ const StorySection = () => {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-
   const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   return (
-    <section
-      id="story"
-      ref={sectionRef}
-      className="section-padding relative overflow-hidden"
-    >
-      {/* Vibrant background effects */}
+    <section id="story" ref={sectionRef} className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-500/20 to-cyan-500/10 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.06, 0.12, 0.06] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[120px]"
         />
         <motion.div
-          animate={{
-            scale: [1.1, 1, 1.1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-full blur-3xl"
+          animate={{ scale: [1.1, 1, 1.1], opacity: [0.08, 0.15, 0.08] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-secondary/15 rounded-full blur-[120px]"
         />
       </div>
 
-      {/* Parallax accent line */}
       <motion.div
         style={{ y }}
-        className="absolute -right-20 top-0 w-px h-[200%] bg-gradient-to-b from-transparent via-blue-500/30 to-transparent"
+        className="absolute -right-20 top-0 w-px h-[200%] bg-gradient-to-b from-transparent via-primary/20 to-transparent"
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -90,73 +64,58 @@ const StorySection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center justify-center gap-2 mb-3"
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            <Sparkles className="w-5 h-5 text-accent" />
-            <p className="font-display text-sm tracking-[0.3em] uppercase text-accent">
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-accent" />
+            <p className="font-display text-xs tracking-[0.4em] uppercase text-accent text-glow-gold">
               The Saga Begins
             </p>
-            <Sparkles className="w-5 h-5 text-accent" />
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-accent" />
           </motion.div>
+
           <TextReveal
             as="h2"
-            className="font-display text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6"
+            className="font-display text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent mb-6"
           >
             Connected Worlds. One Destiny.
           </TextReveal>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg text-foreground/90 max-w-3xl mx-auto leading-relaxed"
+            transition={{ delay: 0.4 }}
+            className="text-lg text-foreground/80 max-w-3xl mx-auto leading-relaxed"
           >
-            Harnessing powerful energy shards called MindKeys scattered across
-            The Elliptical Matrix™ of connected worlds, iBOONKA! and the JUMP
-            "Strings!"™ use the CTV Najja Starship™ to travel between
-            dimensions. Their mission: secure the four legendary MINDKEYS™
-            before the Crimson Dragon awakens.
+            Harnessing powerful energy shards called MindKeys scattered across The Elliptical Matrix™,
+            iBOONKA! and the JUMP "Strings!"™ use the CTV Najja Starship™ to travel between dimensions.
+            Their mission: secure the four legendary MINDKEYS™ before the Crimson Dragon awakens.
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {worlds.map((world, i) => {
-            const IconComponent = world.icon;
+            const IconComp = world.icon;
             return (
               <motion.div
                 key={world.name}
-                initial={{ opacity: 0, y: 40, rotateX: 10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, delay: i * 0.12 }}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.3 },
-                }}
-                className="group cursor-default relative"
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="group cursor-default"
               >
-                {/* Glow effect on hover */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${world.color} blur-xl opacity-0 group-hover:${world.hoverGlow} transition-all duration-300`}
-                />
-
-                <div className="relative bg-glass p-6 rounded-2xl border border-white/10 backdrop-blur-xl h-full">
+                <div className="relative bg-glass p-6 rounded-2xl border border-border/50 group-hover:border-primary/30 transition-all duration-300 h-full">
                   <div className="flex items-start gap-4">
-                    <div
-                      className={`p-3 rounded-xl bg-gradient-to-br ${world.color} shadow-lg`}
-                    >
-                      <IconComponent className="w-6 h-6 text-white" />
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${world.color} shadow-lg shrink-0`}>
+                      <IconComp className="w-5 h-5 text-background" />
                     </div>
-                    <div className="flex-1">
-                      <h3
-                        className={`font-display text-lg font-bold mb-2 bg-gradient-to-r ${world.color} bg-clip-text text-transparent`}
-                      >
+                    <div>
+                      <h3 className={`font-display text-lg font-bold mb-2 bg-gradient-to-r ${world.color} bg-clip-text text-transparent`}>
                         {world.name}
                       </h3>
-                      <p className="text-gray-300 leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {world.description}
                       </p>
                     </div>

@@ -19,7 +19,7 @@ const TextReveal = ({ children, className = "", delay = 0, as: Tag = "span" }: T
             className="inline-block"
             initial={{ y: "100%", opacity: 0, rotateX: 45 }}
             whileInView={{ y: 0, opacity: 1, rotateX: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, amount: 0 }}
             transition={{
               duration: 0.6,
               delay: delay + i * 0.04,

@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ["Orbitron", "sans-serif"],
         body: ["Rajdhani", "sans-serif"],
+        exo: ["Exo 2", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,12 +62,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        cyan: {
-          glow: "hsl(var(--glow-cyan))",
-        },
-        crimson: {
-          glow: "hsl(var(--glow-crimson))",
-        },
+        "neon-cyan": "hsl(var(--glow-cyan))",
+        "energy-purple": "hsl(var(--glow-purple))",
+        "golden-energy": "hsl(var(--glow-gold))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -86,16 +84,26 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-20px)" },
         },
+        "float-slow": {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-15px) rotate(3deg)" },
+        },
         "pulse-glow": {
           "0%, 100%": { opacity: "0.5" },
           "50%": { opacity: "1" },
+        },
+        "orbit": {
+          "0%": { transform: "rotate(0deg) translateX(120px) rotate(0deg)" },
+          "100%": { transform: "rotate(360deg) translateX(120px) rotate(-360deg)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
+        "float-slow": "float-slow 8s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "orbit": "orbit 20s linear infinite",
       },
     },
   },

@@ -1,70 +1,84 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown, Sparkles, Play } from "lucide-react";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
-import heroBg from "@/assets/Website Bg 1 1.png";
+import heroBg from "@/assets/hero-cinematic.jpg";
+
+// Floating ability icon component
+const FloatingIcon = ({ src, className, delay = 0 }: { src: string; className: string; delay?: number }) => (
+  <motion.div
+    animate={{
+      y: [0, -15, 0],
+      rotate: [0, 5, -5, 0],
+      scale: [1, 1.05, 1],
+    }}
+    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
+    className={`absolute z-20 ${className}`}
+  >
+    <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-xl bg-glass-strong p-2 glow-border">
+      <img src={src} alt="" className="w-full h-full object-contain" />
+    </div>
+  </motion.div>
+);
 
 const HeroSection = () => {
   const { scrollYProgress } = useScroll();
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 1.1]);
+
+  // Import skill icons for floating elements
+  const skillIcons = [
+    { src: "/src/assets/Skills/thunderEnergy blast.png", pos: "top-1/4 left-[8%] hidden md:block", delay: 0 },
+    { src: "/src/assets/Skills/telekinesis.png", pos: "top-1/3 right-[10%] hidden md:block", delay: 0.8 },
+    { src: "/src/assets/Skills/earthquake stomp.png", pos: "bottom-1/3 left-[5%] hidden lg:block", delay: 1.6 },
+    { src: "/src/assets/Skills/ultimate.png", pos: "bottom-1/4 right-[7%] hidden lg:block", delay: 2.4 },
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Vibrant Gradient Background (Genshin-inspired) */}
+      {/* Cinematic Background */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-purple-900/40 to-pink-900/40" />
-        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover object-center opacity-50" style={{ transform: 'scale(1)' }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+        <img
+          src={heroBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Deep overlays for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
 
-        {/* Magical floating orbs */}
+        {/* Animated energy orbs */}
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.35, 0.15] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px]"
         />
         <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px]"
         />
         <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-yellow-400/15 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.25, 0.1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-accent/15 rounded-full blur-[80px]"
         />
       </motion.div>
 
-      {/* Animated grid overlay */}
+      {/* Subtle grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.05]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(hsl(210 100% 60%) 1px, transparent 1px), linear-gradient(90deg, hsl(210 100% 60%) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+            "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
         }}
       />
+
+      {/* Floating ability icons */}
+      {skillIcons.map((icon, i) => (
+        <FloatingIcon key={i} src={icon.src} className={icon.pos} delay={icon.delay} />
+      ))}
 
       {/* Content */}
       <motion.div
@@ -75,41 +89,40 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 1 }}
-          className="flex items-center justify-center gap-2 mb-4"
+          className="flex items-center justify-center gap-3 mb-6"
         >
-          <Sparkles className="w-4 h-4 text-accent" />
-          <p className="font-display text-sm md:text-base uppercase text-accent tracking-[0.3em]">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
+          <p className="font-display text-xs md:text-sm uppercase text-primary tracking-[0.4em] text-glow-cyan">
             Story One
           </p>
-          <Sparkles className="w-4 h-4 text-accent" />
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary" />
         </motion.div>
 
-        <div className="mb-6">
-          <TextReveal
-            as="h1"
-            className="font-display text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-glow-blue bg-gradient-to-r from-blue-400 via-purple-400 to-blue-300 bg-clip-text text-transparent"
-            delay={0.4}
-          >
-            THE ELLIPTICAL MATRIX™
-          </TextReveal>
-        </div>
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
+          <h1 className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
+            ENTER THE ELLIPTICAL MATRIX
+          </h1>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="text-lg md:text-2xl text-foreground/90 max-w-2xl mx-auto mb-4 font-body font-medium leading-relaxed"
+          className="text-lg md:text-2xl text-foreground/90 max-w-2xl mx-auto mb-3 font-exo font-medium leading-relaxed"
         >
-          iBOONKA!™ and the JUMP "Strings!"™ unravel a cosmic envelope and
-          become oracles in a cosmic trilogy of time travel and the fight
-          between good and evil.
+          Unlock ancient powers. Travel across worlds. Become the chosen Oracle.
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
-          className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10 font-body"
+          className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto mb-10 font-body"
         >
           Secure the four legendary MINDKEYS™. Traverse The Elliptical Matrix™.
           Face the Crimson Dragon.
@@ -123,18 +136,19 @@ const HeroSection = () => {
         >
           <MagneticButton
             as="a"
-            href="#story"
-            className="inline-flex items-center justify-center px-10 py-4 font-display text-sm tracking-widest uppercase bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-[0_0_40px_hsl(210_100%_60%/0.6),0_0_80px_hsl(280_70%_60%/0.3)] transition-all duration-300 glow-border"
+            href="#preregister"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase bg-gradient-to-r from-primary to-neon-cyan text-primary-foreground rounded-xl hover:shadow-[0_0_50px_hsl(var(--primary)/0.5)] transition-all duration-300 glow-border font-bold"
           >
-            <Sparkles className="w-4 h-4 mr-2" />
-            Explore the Lore
+            <Sparkles className="w-4 h-4" />
+            Pre-Register Now
           </MagneticButton>
           <MagneticButton
             as="a"
-            href="#characters"
-            className="inline-flex items-center justify-center px-10 py-4 font-display text-sm tracking-widest uppercase glow-border-gold bg-gradient-to-r from-yellow-500/10 to-amber-500/10 text-accent rounded-xl hover:bg-accent/20 transition-all duration-300"
+            href="#trailer"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase glow-border-purple bg-secondary/10 text-secondary rounded-xl hover:bg-secondary/20 transition-all duration-300"
           >
-            Meet the Team
+            <Play className="w-4 h-4" />
+            Watch Gameplay
           </MagneticButton>
         </motion.div>
       </motion.div>
@@ -143,7 +157,7 @@ const HeroSection = () => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary/50"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary/40"
       >
         <ChevronDown size={32} />
       </motion.div>
