@@ -1,222 +1,158 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Sparkles, Star } from "lucide-react";
 import TextReveal from "./TextReveal";
-import akiraImg from "@/assets/characters/Akira.png";
+
 import iboonkaImg from "@/assets/characters/iBoonka.png";
-import kurtImg from "@/assets/characters/Kurt.png";
-import poojaImg from "@/assets/characters/Pooja.png";
+import runImg from "@/assets/Skills/run.png";
+import jumpImg from "@/assets/Skills/jump.png";
+import thunderImg from "@/assets/Skills/thunderEnergy blast.png";
+import earthquakeImg from "@/assets/Skills/earthquake stomp.png";
+import ultimateImg from "@/assets/Skills/ultimate.png";
+import telekinesisImg from "@/assets/Skills/telekinesis.png";
 
-const characters = [
-  {
-    name: "iBOONKA!",
-    image: iboonkaImg,
-    role: "Team Leader & Oracle",
-    element: "Cosmic",
-    color: "from-blue-500 to-cyan-400",
-  },
-  {
-    name: "Akira",
-    image: akiraImg,
-    role: "Energy Channeler",
-    element: "Lightning",
-    color: "from-purple-500 to-pink-400",
-  },
-  {
-    name: "Kurt",
-    image: kurtImg,
-    role: "Shield Guardian",
-    element: "Earth",
-    color: "from-amber-500 to-yellow-400",
-  },
-  {
-    name: "Pooja",
-    image: poojaImg,
-    role: "Mystic Navigator",
-    element: "Void",
-    color: "from-indigo-500 to-purple-400",
-  },
+const abilityIcons = [
+  { src: runImg, name: "Speed Run", angle: 0 },
+  { src: jumpImg, name: "Super Jump", angle: 60 },
+  { src: thunderImg, name: "Thunder", angle: 120 },
+  { src: earthquakeImg, name: "Earthquake", angle: 180 },
+  { src: ultimateImg, name: "Ultimate", angle: 240 },
+  { src: telekinesisImg, name: "Telekinesis", angle: 300 },
 ];
-
-const CharacterCard = ({
-  char,
-  index,
-}: {
-  char: (typeof characters)[0];
-  index: number;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), {
-    damping: 20,
-    stiffness: 150,
-  });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), {
-    damping: 20,
-    stiffness: 150,
-  });
-
-  const handleMouse = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const resetMouse = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.7, delay: index * 0.15 }}
-      className="group"
-    >
-      <motion.div
-        ref={ref}
-        onMouseMove={handleMouse}
-        onMouseLeave={resetMouse}
-        style={{ rotateX, rotateY, transformPerspective: 800 }}
-        className="relative rounded-3xl p-1 overflow-hidden bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 transition-all duration-500 group-hover:shadow-[0_0_60px_hsl(210_100%_60%/0.4),0_0_100px_hsl(280_70%_60%/0.2)]"
-      >
-        {/* Animated border gradient */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            background: `linear-gradient(135deg, hsl(210 100% 60% / 0.3) 0%, hsl(280 70% 60% / 0.3) 50%, hsl(45 100% 65% / 0.3) 100%)`,
-          }}
-        />
-
-        <div className="relative rounded-3xl bg-card/95 backdrop-blur-xl p-4">
-          {/* Shine effect */}
-          <motion.div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{
-              background:
-                "linear-gradient(105deg, transparent 40%, hsl(210 100% 60% / 0.12) 45%, hsl(280 70% 60% / 0.2) 50%, hsl(210 100% 60% / 0.12) 55%, transparent 60%)",
-            }}
-          />
-
-          {/* Element badge */}
-          <div className="absolute top-6 right-6 z-10">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 + index * 0.1, type: "spring" }}
-              className={`px-3 py-1 rounded-full bg-gradient-to-r ${char.color} text-white text-xs font-display uppercase tracking-wider shadow-lg flex items-center gap-1`}
-            >
-              <Star className="w-3 h-3 fill-current" />
-              {char.element}
-            </motion.div>
-          </div>
-
-          <div className="relative aspect-[3/4] flex items-end justify-center">
-            <motion.img
-              src={char.image}
-              alt={char.name}
-              className="h-full w-auto object-contain drop-shadow-[0_0_30px_hsl(210_100%_60%/0.4)]"
-              whileHover={{ scale: 1.08, y: -8 }}
-              transition={{ type: "spring", damping: 15, stiffness: 200 }}
-            />
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 + index * 0.15 }}
-        className="mt-4 text-center"
-      >
-        <h3 className="font-display text-base md:text-lg font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-1">
-          {char.name}
-        </h3>
-        <p className="text-sm text-muted-foreground">{char.role}</p>
-      </motion.div>
-    </motion.div>
-  );
-};
 
 const CharactersPreview = () => {
   return (
-    <section
-      id="characters"
-      className="section-padding relative overflow-hidden"
-    >
-      {/* Background effects */}
+    <section id="characters" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.18, 0.08] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.14, 0.06] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px]"
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-3"
+            className="flex items-center justify-center gap-3 mb-4"
           >
-            <Sparkles className="w-4 h-4 text-accent" />
-            <p className="font-display text-sm tracking-[0.3em] uppercase text-accent">
-              The Jump Strings!
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary" />
+            <p className="font-display text-xs tracking-[0.4em] uppercase text-primary text-glow-cyan">
+              The Oracles
             </p>
-            <Sparkles className="w-4 h-4 text-accent" />
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
+
           <TextReveal
             as="h2"
-            className="font-display text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 text-glow-blue"
+            className="font-display text-4xl md:text-6xl font-black bg-gradient-to-r from-primary via-neon-cyan to-secondary bg-clip-text text-transparent mb-4"
           >
-            Meet the Oracles
+            Master Elemental Powers
           </TextReveal>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            Each Oracle channels unique cosmic energy, becoming powered-up
-            beacons called "Strings!" Their combined team-strength is the only
-            hope against the Crimson Dragon.
+            Master Elemental Powers & Combat Styles
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {characters.map((char, i) => (
-            <CharacterCard key={char.name} char={char} index={i} />
-          ))}
-        </div>
+        {/* Center character with orbiting abilities */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative flex items-center justify-center mb-16"
+        >
+          {/* Aura glow rings */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-primary/20"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full border border-secondary/15"
+          />
 
+          {/* Energy aura behind character */}
+          <motion.div
+            animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/20 rounded-full blur-[60px]"
+          />
+
+          {/* Central character */}
+          <motion.img
+            src={iboonkaImg}
+            alt="iBOONKA!"
+            className="relative z-10 h-72 md:h-96 object-contain drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)]"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Orbiting ability icons */}
+          {abilityIcons.map((ability, i) => {
+            const radius = 180;
+            const mdRadius = 250;
+            return (
+              <motion.div
+                key={ability.name}
+                className="absolute hidden md:flex"
+                animate={{ rotate: [ability.angle, ability.angle + 360] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                style={{
+                  width: `${mdRadius * 2}px`,
+                  height: `${mdRadius * 2}px`,
+                  top: `calc(50% - ${mdRadius}px)`,
+                  left: `calc(50% - ${mdRadius}px)`,
+                }}
+              >
+                <motion.div
+                  animate={{ rotate: [-ability.angle, -(ability.angle + 360)] }}
+                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-glass-strong p-2 glow-border hover:glow-border-purple transition-all duration-300 cursor-default group">
+                    <img src={ability.src} alt={ability.name} className="w-full h-full object-contain" />
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      <span className="text-[10px] font-display text-primary uppercase tracking-wider">{ability.name}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* View all characters button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-12"
+          transition={{ delay: 0.5 }}
+          className="text-center"
         >
           <Link
             to="/characters"
-            className="inline-flex items-center px-10 py-4 font-display text-sm tracking-widest uppercase glow-border-gold bg-gradient-to-r from-yellow-500/10 to-amber-500/10 text-accent rounded-xl hover:bg-accent/20 transition-all duration-300 hover:shadow-[0_0_30px_hsl(45_100%_65%/0.3)] group"
+            className="inline-flex items-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase glow-border bg-primary/10 text-primary rounded-xl hover:bg-primary/20 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)]"
           >
-            <span>View All Characters</span>
-            <motion.span
-              initial={{ x: 0 }}
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="ml-2"
-            >
-              →
-            </motion.span>
+            <Sparkles className="w-4 h-4" />
+            View All Characters
           </Link>
         </motion.div>
       </div>

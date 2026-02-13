@@ -1,12 +1,12 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import StorySection from "@/components/StorySection";
+import PreregistrationCounter from "@/components/PreregistrationCounter";
+import GameWorldsSection from "@/components/GameWorldsSection";
 import CharactersPreview from "@/components/CharactersPreview";
+import GameplayFeatures from "@/components/GameplayFeatures";
 import SkillsShowcase from "@/components/SkillsShowcase";
 import MindKeysShowcase from "@/components/MindKeysShowcase";
-import GatherablesShowcase from "@/components/GatherablesShowcase";
 import LoreTrailerSection from "@/components/LoreTrailerSection";
-import PreregistrationCounter from "@/components/PreregistrationCounter";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
@@ -17,13 +17,13 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <HeroSection />
-        <StorySection />
+        <PreregistrationCounter />
+        <GameWorldsSection />
         <CharactersPreview />
+        <GameplayFeatures />
         <SkillsShowcase />
         <MindKeysShowcase />
-        <GatherablesShowcase />
         <LoreTrailerSection />
-        <PreregistrationCounter />
         <CTASection />
         <Footer />
       </div>
