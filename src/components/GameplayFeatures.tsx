@@ -37,11 +37,7 @@ const GameplayFeatures = () => {
   return (
     <section className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.3, 1], opacity: [0.06, 0.12, 0.06] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-accent/15 rounded-full blur-[120px]"
-        />
+        <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-accent/15 rounded-full blur-[120px] animate-float-orb" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -85,8 +81,7 @@ const GameplayFeatures = () => {
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="group relative"
+              className="group relative hover-lift transition-smooth"
             >
               {/* Glow on hover */}
               <div

@@ -46,16 +46,8 @@ const PreregistrationCounter = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
 
       {/* Pulsing energy ring */}
-      <motion.div
-        animate={{ scale: [1, 1.5, 1], opacity: [0.15, 0.3, 0.15] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-primary/20"
-      />
-      <motion.div
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.25, 0.1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-secondary/15"
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-primary/20 animate-float-orb" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-secondary/15 animate-float-orb-reverse" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         {/* Main counter */}

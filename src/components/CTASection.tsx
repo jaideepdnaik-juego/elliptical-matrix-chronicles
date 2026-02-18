@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { Download, Mail, Sparkles, Smartphone } from "lucide-react";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
-import heroBg from "@/assets/hero-cinematic.jpg";
+import heroBg from "@/assets/hero-cinematic.webp";
 
 const CTASection = () => {
   const ref = useRef(null);
@@ -17,11 +17,7 @@ const CTASection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
       </div>
 
-      <motion.div
-        animate={{ scale: [1, 1.4, 1], opacity: [0.15, 0.3, 0.15] }}
-        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/15 blur-[100px]"
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/15 blur-[100px] animate-float-orb" />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.div

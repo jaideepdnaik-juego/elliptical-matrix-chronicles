@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import TextReveal from "@/components/TextReveal";
-import mindkeysImg from "@/assets/mindkeys.jpg";
+import mindkeysImg from "@/assets/mindkeys.webp";
 
 const mindkeys = [
   {

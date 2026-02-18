@@ -52,11 +52,7 @@ const SkillsShowcase = () => {
   return (
     <section className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.06, 0.12, 0.06] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[120px]"
-        />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[120px] animate-float-orb" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">

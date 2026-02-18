@@ -27,21 +27,8 @@ const CharactersPreview = () => {
       className="section-padding relative overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.18, 0.08] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]"
-        />
-        <motion.div
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.14, 0.06] }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px]"
-        />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px] animate-float-orb" />
+        <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px] animate-float-orb-reverse" />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -86,16 +73,8 @@ const CharactersPreview = () => {
           className="relative flex items-center justify-center mb-16"
         >
           {/* Aura glow rings */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-primary/20"
-          />
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full border border-secondary/15"
-          />
+          <div className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-primary/20 animate-rotate-slow" />
+          <div className="absolute w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full border border-secondary/15 animate-rotate-reverse" />
 
           {/* Energy aura behind character */}
           <motion.div

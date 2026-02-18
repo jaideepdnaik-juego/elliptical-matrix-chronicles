@@ -8,11 +8,7 @@ const LoreTrailerSection = () => {
     <section id="trailer" className="relative py-28 md:py-36 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/5 to-background" />
 
-      <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.18, 0.08] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[120px]"
-      />
+      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[120px] animate-float-orb" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div

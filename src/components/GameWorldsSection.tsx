@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import TextReveal from "./TextReveal";
 
-import desertImg from "@/assets/worlds/desert-pyramid.jpg";
-import neonCityImg from "@/assets/worlds/neon-city.jpg";
-import templeImg from "@/assets/worlds/floating-temple.jpg";
-import spaceDockImg from "@/assets/worlds/space-dock.jpg";
+import desertImg from "@/assets/worlds/desert-pyramid.webp";
+import neonCityImg from "@/assets/worlds/neon-city.webp";
+import templeImg from "@/assets/worlds/floating-temple.webp";
+import spaceDockImg from "@/assets/worlds/space-dock.webp";
 
 const worlds = [
   {
@@ -42,11 +42,7 @@ const GameWorldsSection = () => {
   return (
     <section id="worlds" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.15, 0.08] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[120px]"
-        />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[120px] animate-float-orb" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -90,8 +86,7 @@ const GameWorldsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
-              whileHover={{ y: -8 }}
-              className="group relative rounded-2xl overflow-hidden cursor-default"
+              className="group relative rounded-2xl overflow-hidden cursor-default hover-lift transition-smooth"
             >
               {/* Hover glow */}
               <div

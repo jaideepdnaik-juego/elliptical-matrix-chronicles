@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Sparkles, Play } from "lucide-react";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
-import heroBg from "@/assets/hero-cinematic.jpg";
+import heroBg from "@/assets/hero-cinematic.webp";
 
 // Floating ability icon component
 const FloatingIcon = ({
@@ -72,31 +72,9 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
 
         {/* Animated energy orbs */}
-        <motion.div
-          animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.35, 0.15] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px]"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0.3, 0.1] }}
-          transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1.5,
-          }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px]"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.25, 0.1] }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3,
-          }}
-          className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-accent/15 rounded-full blur-[80px]"
-        />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-float-orb" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] animate-float-orb-reverse" />
+        <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-accent/15 rounded-full blur-[80px] animate-float-orb" style={{ animationDelay: '3s' }} />
       </motion.div>
 
       {/* Subtle grid overlay */}

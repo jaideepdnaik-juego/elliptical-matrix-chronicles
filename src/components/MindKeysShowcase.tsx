@@ -46,11 +46,7 @@ const mindkeys = [
 const MindKeysShowcase = () => {
   return (
     <section className="section-padding relative overflow-hidden">
-      <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.06, 0.15, 0.06] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[120px]"
-      />
+      <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[120px] animate-float-orb" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
@@ -94,8 +90,7 @@ const MindKeysShowcase = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: i * 0.12 }}
-              whileHover={{ y: -12, scale: 1.03 }}
-              className="group"
+              className="group hover-lift transition-smooth"
             >
               <div className="relative h-full">
                 <motion.div
