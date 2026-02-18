@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Download, Mail, Sparkles, Smartphone } from "lucide-react";
+import { useRef } from "react";
+import { Download, Smartphone } from "lucide-react";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
 import heroBg from "@/assets/hero-cinematic.webp";
@@ -8,7 +8,6 @@ import heroBg from "@/assets/hero-cinematic.webp";
 const CTASection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [email, setEmail] = useState("");
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
@@ -39,7 +38,7 @@ const CTASection = () => {
               className="font-display text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent"
               delay={0.3}
             >
-              Pre-Register & Unlock Exclusive Founder Rewards
+              Join the Oracle Chronicles
             </TextReveal>
           </div>
 
@@ -67,30 +66,6 @@ const CTASection = () => {
               <Download className="w-5 h-5" />
               App Store
             </MagneticButton>
-          </motion.div>
-
-          {/* Email registration */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.2 }}
-            className="max-w-md mx-auto"
-          >
-            <div className="flex gap-2 bg-glass-strong rounded-xl p-1.5">
-              <div className="flex items-center gap-2 px-3 flex-1">
-                <Mail className="w-4 h-4 text-muted-foreground shrink-0" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="bg-transparent border-none outline-none text-sm text-foreground placeholder:text-muted-foreground w-full font-body"
-                />
-              </div>
-              <button className="px-6 py-2.5 bg-gradient-to-r from-accent to-golden-energy text-accent-foreground font-display text-xs tracking-widest uppercase rounded-lg font-bold hover:shadow-[0_0_30px_hsl(var(--accent)/0.4)] transition-all duration-300 shrink-0">
-                Register
-              </button>
-            </div>
           </motion.div>
         </motion.div>
       </div>

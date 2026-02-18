@@ -69,13 +69,6 @@ const Navbar = () => {
               />
             </Link>
           ))}
-
-          <a
-            href="#preregister"
-            className="px-5 py-2 font-display text-[10px] tracking-[0.2em] uppercase bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 hover:border-primary/50 transition-all duration-300"
-          >
-            Pre-Register
-          </a>
         </div>
 
         <motion.button

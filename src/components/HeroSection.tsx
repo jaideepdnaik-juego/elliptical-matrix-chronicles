@@ -157,14 +157,6 @@ const HeroSection = () => {
         >
           <MagneticButton
             as="a"
-            href="#preregister"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase bg-gradient-to-r from-primary to-neon-cyan text-primary-foreground rounded-xl hover:shadow-[0_0_50px_hsl(var(--primary)/0.5)] transition-all duration-300 glow-border font-bold"
-          >
-            <Sparkles className="w-4 h-4" />
-            Pre-Register Now
-          </MagneticButton>
-          <MagneticButton
-            as="a"
             href="#trailer"
             className="inline-flex items-center justify-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase glow-border-purple bg-secondary/10 text-secondary rounded-xl hover:bg-secondary/20 transition-all duration-300"
           >
