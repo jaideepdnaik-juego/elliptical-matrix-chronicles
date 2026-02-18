@@ -2,37 +2,37 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import TextReveal from "./TextReveal";
 
-import desertImg from "@/assets/worlds/desert-pyramid.webp";
-import neonCityImg from "@/assets/worlds/neon-city.webp";
-import templeImg from "@/assets/worlds/floating-temple.webp";
-import spaceDockImg from "@/assets/worlds/space-dock.webp";
+import boonkalandImg from "@/assets/worlds/BOONKALAND.webp";
+import californiaCityImg from "@/assets/worlds/CALIFORNIA CITY.webp";
+import chinaCityImg from "@/assets/worlds/CHINA CITY.webp";
+import dynaWorldImg from "@/assets/worlds/DYNA WORLD.webp";
 
 const worlds = [
   {
-    name: "Desert Pyramid Realm",
-    image: desertImg,
-    tagline: "Where ancient gods forged the first MindKey in starfire.",
+    name: "BOONKA! Land",
+    image: boonkalandImg,
+    tagline: "A vibrant world where gravity defies logic and ancient constructs guard celestial power.",
     color: "from-amber-400 to-orange-500",
     glowHsl: "30 100% 55%",
   },
   {
-    name: "Futuristic Neon City",
-    image: neonCityImg,
-    tagline: "Neon-lit streets hide portals to forgotten dimensions.",
+    name: "California City",
+    image: californiaCityImg,
+    tagline: "Modern metropolis meets mystical energy. Where technology and magic intertwine.",
     color: "from-primary to-neon-cyan",
     glowHsl: "193 100% 65%",
   },
   {
-    name: "Floating Temple Sanctum",
-    image: templeImg,
-    tagline: "Suspended between realms, where Oracles first awakened.",
+    name: "China City",
+    image: chinaCityImg,
+    tagline: "Ancient wisdom flows through neon-lit streets. Tradition meets the future.",
     color: "from-secondary to-energy-purple",
     glowHsl: "249 100% 71%",
   },
   {
-    name: "Orbital Space Dock",
-    image: spaceDockImg,
-    tagline: "The CTV Najja Starship™ launches from this cosmic gateway.",
+    name: "Dyna World",
+    image: dynaWorldImg,
+    tagline: "Crystal caverns pulse with cosmic energy. The birthplace of the first MindKey.",
     color: "from-primary to-blue-500",
     glowHsl: "210 100% 60%",
   },
