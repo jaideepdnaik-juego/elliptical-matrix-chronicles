@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Sparkles, Play } from "lucide-react";
+import { ChevronDown, Sparkles, Play, Smartphone, Download } from "lucide-react";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
 import heroBg from "@/assets/hero-cinematic.webp";
@@ -155,6 +155,14 @@ const HeroSection = () => {
           transition={{ delay: 1.4, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
+          <MagneticButton className="group inline-flex items-center justify-center gap-3 px-10 py-4 font-display text-sm tracking-widest uppercase bg-gradient-to-r from-primary to-neon-cyan text-primary-foreground rounded-xl hover:shadow-[0_0_50px_hsl(var(--primary)/0.5)] transition-all duration-300 glow-border font-bold">
+            <Smartphone className="w-5 h-5" />
+            Google Play
+          </MagneticButton>
+          <MagneticButton className="group inline-flex items-center justify-center gap-3 px-10 py-4 font-display text-sm tracking-widest uppercase bg-foreground/10 text-foreground rounded-xl border border-foreground/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300">
+            <Download className="w-5 h-5" />
+            App Store
+          </MagneticButton>
           <MagneticButton
             as="a"
             href="#trailer"
