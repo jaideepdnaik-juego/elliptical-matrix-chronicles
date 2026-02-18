@@ -200,11 +200,11 @@ const CharactersPreview = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative flex items-center justify-center mb-24 md:mb-28"
+          className="relative flex items-center justify-center mb-20"
         >
           {/* Aura glow rings */}
-          <div className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-primary/20 animate-rotate-slow" />
-          <div className="absolute w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full border border-secondary/15 animate-rotate-reverse" />
+          <div className="absolute w-[380px] h-[380px] md:w-[500px] md:h-[500px] rounded-full border border-primary/20 animate-rotate-slow" />
+          <div className="absolute w-[440px] h-[440px] md:w-[570px] md:h-[570px] rounded-full border border-secondary/15 animate-rotate-reverse" />
 
           {/* Energy aura behind character */}
           <motion.div
@@ -213,7 +213,7 @@ const CharactersPreview = () => {
             className="absolute w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/20 rounded-full blur-[60px]"
           />
 
-          {/* Central character */}
+          {/* Central character with name */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentCharacter}
@@ -221,12 +221,12 @@ const CharactersPreview = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.5 }}
-              className="relative z-10"
+              className="relative z-10 flex flex-col items-center justify-center w-[320px] md:w-[420px]"
             >
               <motion.img
                 src={characters[currentCharacter].image}
                 alt={characters[currentCharacter].name}
-                className={`h-72 md:h-96 object-contain drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)] ${
+                className={`h-48 md:h-64 object-contain drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)] ${
                   !characters[currentCharacter].available ? 'opacity-30 grayscale' : ''
                 }`}
                 animate={{ y: [0, -10, 0] }}
@@ -239,27 +239,27 @@ const CharactersPreview = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
-                  <div className="px-8 py-4 rounded-xl bg-glass-strong border-2 border-accent/50 glow-border-gold">
-                    <p className="font-display text-2xl md:text-3xl text-accent text-glow-gold tracking-wider uppercase">
+                  <div className="px-6 py-3 md:px-8 md:py-4 rounded-xl bg-glass-strong border-2 border-accent/50 glow-border-gold">
+                    <p className="font-display text-xl md:text-3xl text-accent text-glow-gold tracking-wider uppercase">
                       Coming Soon
                     </p>
                   </div>
                 </motion.div>
               )}
               
-              {/* Character name overlay */}
+              {/* Character name inside circle */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center whitespace-nowrap"
+                className="text-center mt-4"
               >
-                <h3 className="font-display text-xl md:text-2xl text-primary text-glow-cyan mb-1">
+                <h3 className="font-display text-lg md:text-2xl text-primary text-glow-cyan mb-1 whitespace-nowrap">
                   {characters[currentCharacter].name}
                 </h3>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs md:text-sm text-muted-foreground whitespace-nowrap">
                   {characters[currentCharacter].title}
                 </p>
               </motion.div>
@@ -284,7 +284,7 @@ const CharactersPreview = () => {
           </button>
 
           {/* Character indicator dots */}
-          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-20">
             {characters.map((_, index) => (
               <button
                 key={index}
@@ -301,7 +301,7 @@ const CharactersPreview = () => {
 
           {/* Orbiting ability icons - Only for available characters */}
           {characters[currentCharacter].available && abilityIcons.map((ability, i) => {
-            const radius = 180;
+            const radius = 190;
             const mdRadius = 250;
             return (
               <motion.div
