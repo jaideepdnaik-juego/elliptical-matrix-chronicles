@@ -1,16 +1,50 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, X } from "lucide-react";
+import { Sparkles, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import TextReveal from "./TextReveal";
 
 import iboonkaImg from "@/assets/characters/iBoonka.webp";
+import poojaImg from "@/assets/characters/Pooja.webp";
+import akiraImg from "@/assets/characters/Akira.webp";
+import kurtImg from "@/assets/characters/Kurt.webp";
 import runImg from "@/assets/Skills/run.webp";
 import jumpImg from "@/assets/Skills/jump.webp";
 import thunderImg from "@/assets/Skills/thunderEnergy blast.webp";
 import earthquakeImg from "@/assets/Skills/earthquake stomp.webp";
 import ultimateImg from "@/assets/Skills/ultimate.webp";
 import telekinesisImg from "@/assets/Skills/telekinesis.webp";
+
+const characters = [
+  {
+    name: "iBOONKA!",
+    image: iboonkaImg,
+    title: "The Cosmic Oracle",
+    element: "Thunder & Earth",
+    available: true
+  },
+  {
+    name: "Pooja",
+    image: poojaImg,
+    title: "The Mystic Sage",
+    element: "Mind & Spirit",
+    available: true
+  },
+  {
+    name: "Akira",
+    image: akiraImg,
+    title: "The Shadow Striker",
+    element: "Fire & Wind",
+    available: false
+  },
+  {
+    name: "Kurt",
+    image: kurtImg,
+    title: "The Iron Guardian",
+    element: "Metal & Ice",
+    available: false
+  },
+];
 
 const abilityIcons = [
   { 
@@ -66,6 +100,7 @@ const abilityIcons = [
 const CharactersPreview = () => {
   const [selectedAbility, setSelectedAbility] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [currentCharacter, setCurrentCharacter] = useState(0);
 
   const handleAbilityClick = (index: number) => {
     setSelectedAbility(index);
@@ -75,6 +110,14 @@ const CharactersPreview = () => {
   const handleClose = () => {
     setSelectedAbility(null);
     setIsPaused(false);
+  };
+
+  const handlePrevCharacter = () => {
+    setCurrentCharacter((prev) => (prev === 0 ? characters.length - 1 : prev - 1));
+  };
+
+  const handleNextCharacter = () => {
+    setCurrentCharacter((prev) => (prev === characters.length - 1 ? 0 : prev + 1));
   };
 
   // Handle Escape key to close description
@@ -87,6 +130,22 @@ const CharactersPreview = () => {
 
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
+  }, [selectedAbility]);
+
+  // Handle Left/Right arrow keys for character navigation
+  useEffect(() => {
+    const handleArrowKeys = (e: KeyboardEvent) => {
+      if (selectedAbility === null) { // Only navigate when description is closed
+        if (e.key === 'ArrowLeft') {
+          handlePrevCharacter();
+        } else if (e.key === 'ArrowRight') {
+          handleNextCharacter();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleArrowKeys);
+    return () => window.removeEventListener('keydown', handleArrowKeys);
   }, [selectedAbility]);
   return (
     <section
@@ -141,7 +200,7 @@ const CharactersPreview = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative flex items-center justify-center mb-16"
+          className="relative flex items-center justify-center mb-24 md:mb-28"
         >
           {/* Aura glow rings */}
           <div className="absolute w-[320px] h-[320px] md:w-[450px] md:h-[450px] rounded-full border border-primary/20 animate-rotate-slow" />
@@ -155,16 +214,93 @@ const CharactersPreview = () => {
           />
 
           {/* Central character */}
-          <motion.img
-            src={iboonkaImg}
-            alt="iBOONKA!"
-            className="relative z-10 h-72 md:h-96 object-contain drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)]"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentCharacter}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5 }}
+              className="relative z-10"
+            >
+              <motion.img
+                src={characters[currentCharacter].image}
+                alt={characters[currentCharacter].name}
+                className={`h-72 md:h-96 object-contain drop-shadow-[0_0_40px_hsl(var(--primary)/0.5)] ${
+                  !characters[currentCharacter].available ? 'opacity-30 grayscale' : ''
+                }`}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              {/* Coming Soon Badge */}
+              {!characters[currentCharacter].available && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <div className="px-8 py-4 rounded-xl bg-glass-strong border-2 border-accent/50 glow-border-gold">
+                    <p className="font-display text-2xl md:text-3xl text-accent text-glow-gold tracking-wider uppercase">
+                      Coming Soon
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+              
+              {/* Character name overlay */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center whitespace-nowrap"
+              >
+                <h3 className="font-display text-xl md:text-2xl text-primary text-glow-cyan mb-1">
+                  {characters[currentCharacter].name}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {characters[currentCharacter].title}
+                </p>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Orbiting ability icons */}
-          {abilityIcons.map((ability, i) => {
+          {/* Navigation Arrows */}
+          <button
+            onClick={handlePrevCharacter}
+            className="absolute left-0 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-glass-strong border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/10 hover:border-primary/50 hover:scale-110 transition-all duration-300 glow-border group"
+            aria-label="Previous character"
+          >
+            <ChevronLeft className="w-6 h-6 group-hover:text-glow-cyan" />
+          </button>
+          
+          <button
+            onClick={handleNextCharacter}
+            className="absolute right-0 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-glass-strong border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/10 hover:border-primary/50 hover:scale-110 transition-all duration-300 glow-border group"
+            aria-label="Next character"
+          >
+            <ChevronRight className="w-6 h-6 group-hover:text-glow-cyan" />
+          </button>
+
+          {/* Character indicator dots */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            {characters.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentCharacter(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentCharacter 
+                    ? 'w-8 bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+                aria-label={`View ${characters[index].name}`}
+              />
+            ))}
+          </div>
+
+          {/* Orbiting ability icons - Only for available characters */}
+          {characters[currentCharacter].available && abilityIcons.map((ability, i) => {
             const radius = 180;
             const mdRadius = 250;
             return (
