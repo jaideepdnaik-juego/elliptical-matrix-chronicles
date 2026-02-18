@@ -26,6 +26,10 @@ const CharactersPreview = () => {
       id="characters"
       className="section-padding relative overflow-hidden"
     >
+      {/* Gradient transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px] animate-float-orb" />
         <div className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px] animate-float-orb-reverse" />

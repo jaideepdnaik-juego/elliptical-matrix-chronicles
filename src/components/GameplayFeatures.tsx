@@ -36,6 +36,10 @@ const features = [
 const GameplayFeatures = () => {
   return (
     <section className="section-padding relative overflow-hidden">
+      {/* Gradient transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+      
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-accent/15 rounded-full blur-[120px] animate-float-orb" />
       </div>

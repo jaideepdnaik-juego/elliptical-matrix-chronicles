@@ -9,6 +9,9 @@ const CTASection = () => {
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
+      {/* Gradient transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none z-20" />
+      
       <div className="absolute inset-0">
         <img src={heroBg} alt="" className="w-full h-full object-cover opacity-15" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />

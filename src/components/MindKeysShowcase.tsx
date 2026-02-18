@@ -46,6 +46,10 @@ const mindkeys = [
 const MindKeysShowcase = () => {
   return (
     <section className="section-padding relative overflow-hidden">
+      {/* Gradient transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+      
       <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[120px] animate-float-orb" />
 
       <div className="max-w-7xl mx-auto relative z-10">

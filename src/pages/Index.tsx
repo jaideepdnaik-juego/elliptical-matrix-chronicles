@@ -18,12 +18,12 @@ const Index = () => {
         <Navbar />
         <HeroSection />
         <PreregistrationCounter />
+        <LoreTrailerSection />
         <GameWorldsSection />
         <CharactersPreview />
         <GameplayFeatures />
         <SkillsShowcase />
         <MindKeysShowcase />
-        <LoreTrailerSection />
         <CTASection />
         <Footer />
       </div>

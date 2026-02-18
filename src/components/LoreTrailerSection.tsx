@@ -5,7 +5,10 @@ const LoreTrailerSection = () => {
   const YOUTUBE_VIDEO_ID = "dQw4w9WgXcQ"; // PLACEHOLDER: Replace with actual video ID
 
   return (
-    <section id="trailer" className="relative py-28 md:py-36 overflow-hidden">
+    <section id="trailer" className="relative py-12 md:py-16 overflow-hidden">
+      {/* Gradient transitions */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/5 to-background" />
 
       <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[120px] animate-float-orb" />

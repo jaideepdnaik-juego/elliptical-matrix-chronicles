@@ -67,9 +67,10 @@ const HeroSection = () => {
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Deep overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
+        {/* Deep overlays for depth - improved fade */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-background via-background/95 to-transparent" />
 
         {/* Animated energy orbs */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-float-orb" />

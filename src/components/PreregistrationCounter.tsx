@@ -42,7 +42,10 @@ const PreregistrationCounter = () => {
   ];
 
   return (
-    <section id="preregister" ref={ref} className="relative py-28 md:py-40 overflow-hidden">
+    <section id="preregister" ref={ref} className="relative py-12 md:py-16 overflow-hidden">
+      {/* Gradient transitions */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
 
       {/* Pulsing energy ring */}
