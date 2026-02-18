@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.png";
+import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -26,7 +26,10 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-primary/10"
@@ -47,17 +50,21 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link key={link.to} to={link.to} className="relative group">
-              <span className={`font-display text-xs tracking-[0.2em] uppercase transition-all duration-300 ${
-                location.pathname === link.to
-                  ? "text-primary text-glow-cyan"
-                  : "text-muted-foreground hover:text-primary"
-              }`}>
+              <span
+                className={`font-display text-xs tracking-[0.2em] uppercase transition-all duration-300 ${
+                  location.pathname === link.to
+                    ? "text-primary text-glow-cyan"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
+              >
                 {link.label}
               </span>
               <motion.span
                 className="absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-primary to-secondary"
                 initial={false}
-                animate={{ width: location.pathname === link.to ? "100%" : "0%" }}
+                animate={{
+                  width: location.pathname === link.to ? "100%" : "0%",
+                }}
                 transition={{ duration: 0.3 }}
               />
             </Link>
@@ -101,7 +108,9 @@ const Navbar = () => {
                     to={link.to}
                     onClick={() => setIsOpen(false)}
                     className={`font-display text-sm tracking-widest uppercase ${
-                      location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                      location.pathname === link.to
+                        ? "text-primary"
+                        : "text-muted-foreground"
                     }`}
                   >
                     {link.label}

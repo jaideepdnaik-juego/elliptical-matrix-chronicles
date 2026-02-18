@@ -1,14 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.png";
-import akiraIcon from "@/assets/Website Icons/Character/Akira.png";
-import iboonkaIcon from "@/assets/Website Icons/Character/imbonka.png";
-import kurtIcon from "@/assets/Website Icons/Character/Kurt.png";
-import poojaIcon from "@/assets/Website Icons/Character/Pooja.png";
-import mindkey1 from "@/assets/Website Icons/Mind Keys/Mindkey_1.png";
-import mindkey2 from "@/assets/Website Icons/Mind Keys/Mindkey_2.png";
-import mindkey3 from "@/assets/Website Icons/Mind Keys/Mindkey_3.png";
-import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.png";
+import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
+import akiraIcon from "@/assets/Website Icons/Character/Akira.webp";
+import iboonkaIcon from "@/assets/Website Icons/Character/imbonka.webp";
+import kurtIcon from "@/assets/Website Icons/Character/Kurt.webp";
+import poojaIcon from "@/assets/Website Icons/Character/Pooja.webp";
+import mindkey1 from "@/assets/Website Icons/Mind Keys/Mindkey_1.webp";
+import mindkey2 from "@/assets/Website Icons/Mind Keys/Mindkey_2.webp";
+import mindkey3 from "@/assets/Website Icons/Mind Keys/Mindkey_3.webp";
+import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.webp";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -159,10 +159,10 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
             {progress < 30
               ? "Initializing Oracle Systems..."
               : progress < 60
-              ? "Securing MindKeys..."
-              : progress < 90
-              ? "Activating Characters..."
-              : "Almost Ready..."}
+                ? "Securing MindKeys..."
+                : progress < 90
+                  ? "Activating Characters..."
+                  : "Almost Ready..."}
           </p>
         </motion.div>
 

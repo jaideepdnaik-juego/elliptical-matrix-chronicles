@@ -3,16 +3,44 @@ import { Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import TextReveal from "./TextReveal";
 
-import mindkey1 from "@/assets/Website Icons/Mind Keys/Mindkey_1.png";
-import mindkey2 from "@/assets/Website Icons/Mind Keys/Mindkey_2.png";
-import mindkey3 from "@/assets/Website Icons/Mind Keys/Mindkey_3.png";
-import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.png";
+import mindkey1 from "@/assets/Website Icons/Mind Keys/Mindkey_1.webp";
+import mindkey2 from "@/assets/Website Icons/Mind Keys/Mindkey_2.webp";
+import mindkey3 from "@/assets/Website Icons/Mind Keys/Mindkey_3.webp";
+import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.webp";
 
 const mindkeys = [
-  { name: "Genesis Key", image: mindkey1, element: "Creation", color: "from-primary to-neon-cyan", power: "Time Manipulation", description: "The first key. Born from the cosmic dawn." },
-  { name: "Crimson Key", image: mindkey2, element: "Destruction", color: "from-red-500 to-rose-400", power: "Reality Warping", description: "Forged in dragon fire and chaos." },
-  { name: "Ethereal Key", image: mindkey3, element: "Spirit", color: "from-secondary to-energy-purple", power: "Dimensional Travel", description: "Whispers from the void between worlds." },
-  { name: "Radiant Key", image: mindkey4, element: "Light", color: "from-accent to-amber-400", power: "Cosmic Force", description: "Pure energy crystallized into form." },
+  {
+    name: "Genesis Key",
+    image: mindkey1,
+    element: "Creation",
+    color: "from-primary to-neon-cyan",
+    power: "Time Manipulation",
+    description: "The first key. Born from the cosmic dawn.",
+  },
+  {
+    name: "Crimson Key",
+    image: mindkey2,
+    element: "Destruction",
+    color: "from-red-500 to-rose-400",
+    power: "Reality Warping",
+    description: "Forged in dragon fire and chaos.",
+  },
+  {
+    name: "Ethereal Key",
+    image: mindkey3,
+    element: "Spirit",
+    color: "from-secondary to-energy-purple",
+    power: "Dimensional Travel",
+    description: "Whispers from the void between worlds.",
+  },
+  {
+    name: "Radiant Key",
+    image: mindkey4,
+    element: "Light",
+    color: "from-accent to-amber-400",
+    power: "Cosmic Force",
+    description: "Pure energy crystallized into form.",
+  },
 ];
 
 const MindKeysShowcase = () => {
@@ -53,7 +81,8 @@ const MindKeysShowcase = () => {
             transition={{ delay: 0.3 }}
             className="text-lg text-foreground/80 max-w-3xl mx-auto"
           >
-            Four cosmic artifacts scattered across The Elliptical Matrix™. Unite them to unlock ultimate power.
+            Four cosmic artifacts scattered across The Elliptical Matrix™. Unite
+            them to unlock ultimate power.
           </motion.p>
         </div>
 
@@ -70,8 +99,16 @@ const MindKeysShowcase = () => {
             >
               <div className="relative h-full">
                 <motion.div
-                  animate={{ opacity: [0.2, 0.4, 0.2], scale: [0.95, 1.05, 0.95] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                  animate={{
+                    opacity: [0.2, 0.4, 0.2],
+                    scale: [0.95, 1.05, 0.95],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.5,
+                  }}
                   className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${key.color} blur-2xl opacity-30`}
                 />
 
@@ -82,17 +119,30 @@ const MindKeysShowcase = () => {
                       alt={key.name}
                       className="relative z-10 w-4/5 h-4/5 object-contain drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
                       animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.2,
+                      }}
                     />
                   </div>
 
-                  <h3 className={`font-display text-lg font-bold mb-1 bg-gradient-to-r ${key.color} bg-clip-text text-transparent`}>
+                  <h3
+                    className={`font-display text-lg font-bold mb-1 bg-gradient-to-r ${key.color} bg-clip-text text-transparent`}
+                  >
                     {key.name}
                   </h3>
-                  <p className="text-xs text-muted-foreground mb-3 flex-1">{key.description}</p>
+                  <p className="text-xs text-muted-foreground mb-3 flex-1">
+                    {key.description}
+                  </p>
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted/30 border border-border/30">
-                    <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${key.color} animate-pulse`} />
-                    <span className="text-xs text-muted-foreground font-display tracking-wider">{key.power}</span>
+                    <div
+                      className={`w-2 h-2 rounded-full bg-gradient-to-r ${key.color} animate-pulse`}
+                    />
+                    <span className="text-xs text-muted-foreground font-display tracking-wider">
+                      {key.power}
+                    </span>
                   </div>
                 </div>
               </div>

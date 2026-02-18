@@ -38,10 +38,10 @@ const ParticleField = () => {
       "196, 181, 253", // purple-300
     ];
 
-    // Create particles
+    // Create particles - reduced for better performance
     const count = Math.min(
-      80,
-      Math.floor((window.innerWidth * window.innerHeight) / 15000),
+      50,
+      Math.floor((window.innerWidth * window.innerHeight) / 25000),
     );
     for (let i = 0; i < count; i++) {
       particles.push({
@@ -94,14 +94,14 @@ const ParticleField = () => {
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Draw connections
-        for (let j = i + 1; j < particles.length; j++) {
+        // Draw connections - optimized with reduced distance and fewer checks
+        for (let j = i + 1; j < Math.min(i + 5, particles.length); j++) {
           const dx = p.x - particles[j].x;
           const dy = p.y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(96, 165, 250, ${0.08 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(96, 165, 250, ${0.08 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -125,7 +125,7 @@ const ParticleField = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.6, willChange: "transform" }}
     />
   );
 };

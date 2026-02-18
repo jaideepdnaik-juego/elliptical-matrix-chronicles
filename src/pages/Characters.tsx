@@ -4,52 +4,82 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import TextReveal from "@/components/TextReveal";
-import akiraImg from "@/assets/characters/Akira.png";
-import iboonkaImg from "@/assets/characters/iBoonka.png";
-import kurtImg from "@/assets/characters/Kurt.png";
-import poojaImg from "@/assets/characters/Pooja.png";
+import akiraImg from "@/assets/characters/Akira.webp";
+import iboonkaImg from "@/assets/characters/iBoonka.webp";
+import kurtImg from "@/assets/characters/Kurt.webp";
+import poojaImg from "@/assets/characters/Pooja.webp";
 
 const characters = [
   {
     name: "iBOONKA!",
     image: iboonkaImg,
     role: "Team Leader & Oracle",
-    description: "The fearless blue-skinned alien who leads the JUMP Strings! With cosmic antennae that sense dimensional rifts and a MindKey crystal embedded in his chest, iBOONKA! channels raw celestial energy. His sunglasses aren't just cool — they filter hyperdimensional light that would blind ordinary beings.",
-    abilities: ["Dimensional Sensing", "Energy Channeling", "Team-Strength Amplification"],
+    description:
+      "The fearless blue-skinned alien who leads the JUMP Strings! With cosmic antennae that sense dimensional rifts and a MindKey crystal embedded in his chest, iBOONKA! channels raw celestial energy. His sunglasses aren't just cool — they filter hyperdimensional light that would blind ordinary beings.",
+    abilities: [
+      "Dimensional Sensing",
+      "Energy Channeling",
+      "Team-Strength Amplification",
+    ],
     world: "BOONKA! Land",
   },
   {
     name: "Akira",
     image: akiraImg,
     role: "Energy Channeler",
-    description: "A brilliant warrior from Future Earth, Akira wields spiral energy through her crystalline armor. Her pink boots generate anti-gravity fields, and her shoulder plates act as energy conductors that can redirect any attack. She's the team's tactical genius.",
-    abilities: ["Spiral Energy Control", "Anti-Gravity Generation", "Tactical Analysis"],
+    description:
+      "A brilliant warrior from Future Earth, Akira wields spiral energy through her crystalline armor. Her pink boots generate anti-gravity fields, and her shoulder plates act as energy conductors that can redirect any attack. She's the team's tactical genius.",
+    abilities: [
+      "Spiral Energy Control",
+      "Anti-Gravity Generation",
+      "Tactical Analysis",
+    ],
     world: "Future Earth",
   },
   {
     name: "Kurt",
     image: kurtImg,
     role: "Shield Guardian",
-    description: "Earth's strongest defender, Kurt's green boots root him to any planetary core, making him immovable. His vest channels nature's energy across all four worlds. A kind heart behind incredible strength — Kurt protects the team at any cost.",
-    abilities: ["Planetary Anchoring", "Nature Force Channeling", "Impenetrable Defense"],
+    description:
+      "Earth's strongest defender, Kurt's green boots root him to any planetary core, making him immovable. His vest channels nature's energy across all four worlds. A kind heart behind incredible strength — Kurt protects the team at any cost.",
+    abilities: [
+      "Planetary Anchoring",
+      "Nature Force Channeling",
+      "Impenetrable Defense",
+    ],
     world: "Dyna World",
   },
   {
     name: "Pooja",
     image: poojaImg,
     role: "Mystic Navigator",
-    description: "The youngest but most powerful mystic of the group, Pooja's oversized eyes see across all dimensions simultaneously. Her golden Oracle pendant lets her communicate with ancient cosmic entities. She guides the CTV Najja Starship through impossible routes.",
-    abilities: ["Dimensional Sight", "Oracle Communication", "Starship Navigation"],
+    description:
+      "The youngest but most powerful mystic of the group, Pooja's oversized eyes see across all dimensions simultaneously. Her golden Oracle pendant lets her communicate with ancient cosmic entities. She guides the CTV Najja Starship through impossible routes.",
+    abilities: [
+      "Dimensional Sight",
+      "Oracle Communication",
+      "Starship Navigation",
+    ],
     world: "Mysterium Tremendum",
   },
 ];
 
-const CharacterDetail = ({ char, index }: { char: typeof characters[0]; index: number }) => {
+const CharacterDetail = ({
+  char,
+  index,
+}: {
+  char: (typeof characters)[0];
+  index: number;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), { damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), { damping: 20 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), {
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
+    damping: 20,
+  });
 
   const handleMouse = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -58,7 +88,10 @@ const CharacterDetail = ({ char, index }: { char: typeof characters[0]; index: n
     mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
-  const resetMouse = () => { mouseX.set(0); mouseY.set(0); };
+  const resetMouse = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
   const isReversed = index % 2 !== 0;
 
   return (
@@ -66,7 +99,10 @@ const CharacterDetail = ({ char, index }: { char: typeof characters[0]; index: n
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+      }}
       className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"} items-center gap-10 lg:gap-16`}
     >
       {/* Character Image with parallax tilt */}
@@ -109,11 +145,17 @@ const CharacterDetail = ({ char, index }: { char: typeof characters[0]; index: n
           >
             {char.world}
           </motion.p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">{char.name}</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">
+            {char.name}
+          </h2>
           <p className="font-display text-sm text-primary mb-4">{char.role}</p>
-          <p className="text-muted-foreground mb-6 leading-relaxed">{char.description}</p>
+          <p className="text-muted-foreground mb-6 leading-relaxed">
+            {char.description}
+          </p>
           <div>
-            <p className="font-display text-xs tracking-[0.2em] uppercase text-foreground/60 mb-3">Abilities</p>
+            <p className="font-display text-xs tracking-[0.2em] uppercase text-foreground/60 mb-3">
+              Abilities
+            </p>
             <div className="flex flex-wrap gap-2">
               {char.abilities.map((a, ai) => (
                 <motion.span
@@ -151,7 +193,11 @@ const Characters = () => {
               >
                 The Oracles
               </motion.p>
-              <TextReveal as="h1" className="font-display text-4xl md:text-6xl font-black text-foreground mb-4" delay={0.2}>
+              <TextReveal
+                as="h1"
+                className="font-display text-4xl md:text-6xl font-black text-foreground mb-4"
+                delay={0.2}
+              >
                 JUMP "Strings!"™
               </TextReveal>
               <motion.p
@@ -160,7 +206,8 @@ const Characters = () => {
                 transition={{ delay: 0.6 }}
                 className="text-lg text-muted-foreground max-w-2xl mx-auto"
               >
-                Individually, they are powered-up beacons of energy. Together, their team-strength can shake the cosmos.
+                Individually, they are powered-up beacons of energy. Together,
+                their team-strength can shake the cosmos.
               </motion.p>
             </div>
 

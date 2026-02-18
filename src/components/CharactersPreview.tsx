@@ -3,13 +3,13 @@ import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import TextReveal from "./TextReveal";
 
-import iboonkaImg from "@/assets/characters/iBoonka.png";
-import runImg from "@/assets/Skills/run.png";
-import jumpImg from "@/assets/Skills/jump.png";
-import thunderImg from "@/assets/Skills/thunderEnergy blast.png";
-import earthquakeImg from "@/assets/Skills/earthquake stomp.png";
-import ultimateImg from "@/assets/Skills/ultimate.png";
-import telekinesisImg from "@/assets/Skills/telekinesis.png";
+import iboonkaImg from "@/assets/characters/iBoonka.webp";
+import runImg from "@/assets/Skills/run.webp";
+import jumpImg from "@/assets/Skills/jump.webp";
+import thunderImg from "@/assets/Skills/thunderEnergy blast.webp";
+import earthquakeImg from "@/assets/Skills/earthquake stomp.webp";
+import ultimateImg from "@/assets/Skills/ultimate.webp";
+import telekinesisImg from "@/assets/Skills/telekinesis.webp";
 
 const abilityIcons = [
   { src: runImg, name: "Speed Run", angle: 0 },
@@ -22,7 +22,10 @@ const abilityIcons = [
 
 const CharactersPreview = () => {
   return (
-    <section id="characters" className="section-padding relative overflow-hidden">
+    <section
+      id="characters"
+      className="section-padding relative overflow-hidden"
+    >
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.3, 1], opacity: [0.08, 0.18, 0.08] }}
@@ -31,7 +34,12 @@ const CharactersPreview = () => {
         />
         <motion.div
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.14, 0.06] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
           className="absolute bottom-1/4 right-0 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px]"
         />
       </div>
@@ -124,13 +132,23 @@ const CharactersPreview = () => {
               >
                 <motion.div
                   animate={{ rotate: [-ability.angle, -(ability.angle + 360)] }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                   className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
                   <div className="w-12 h-12 rounded-xl bg-glass-strong p-2 glow-border hover:glow-border-purple transition-all duration-300 cursor-default group">
-                    <img src={ability.src} alt={ability.name} className="w-full h-full object-contain" />
+                    <img
+                      src={ability.src}
+                      alt={ability.name}
+                      className="w-full h-full object-contain"
+                    />
                     <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                      <span className="text-[10px] font-display text-primary uppercase tracking-wider">{ability.name}</span>
+                      <span className="text-[10px] font-display text-primary uppercase tracking-wider">
+                        {ability.name}
+                      </span>
                     </div>
                   </div>
                 </motion.div>

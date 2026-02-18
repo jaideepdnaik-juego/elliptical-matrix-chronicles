@@ -5,7 +5,15 @@ import MagneticButton from "./MagneticButton";
 import heroBg from "@/assets/hero-cinematic.jpg";
 
 // Floating ability icon component
-const FloatingIcon = ({ src, className, delay = 0 }: { src: string; className: string; delay?: number }) => (
+const FloatingIcon = ({
+  src,
+  className,
+  delay = 0,
+}: {
+  src: string;
+  className: string;
+  delay?: number;
+}) => (
   <motion.div
     animate={{
       y: [0, -15, 0],
@@ -28,10 +36,26 @@ const HeroSection = () => {
 
   // Import skill icons for floating elements
   const skillIcons = [
-    { src: "/src/assets/Skills/thunderEnergy blast.png", pos: "top-1/4 left-[8%] hidden md:block", delay: 0 },
-    { src: "/src/assets/Skills/telekinesis.png", pos: "top-1/3 right-[10%] hidden md:block", delay: 0.8 },
-    { src: "/src/assets/Skills/earthquake stomp.png", pos: "bottom-1/3 left-[5%] hidden lg:block", delay: 1.6 },
-    { src: "/src/assets/Skills/ultimate.png", pos: "bottom-1/4 right-[7%] hidden lg:block", delay: 2.4 },
+    {
+      src: "/src/assets/Skills/thunderEnergy blast.webp",
+      pos: "top-1/4 left-[8%] hidden md:block",
+      delay: 0,
+    },
+    {
+      src: "/src/assets/Skills/telekinesis.webp",
+      pos: "top-1/3 right-[10%] hidden md:block",
+      delay: 0.8,
+    },
+    {
+      src: "/src/assets/Skills/earthquake stomp.webp",
+      pos: "bottom-1/3 left-[5%] hidden lg:block",
+      delay: 1.6,
+    },
+    {
+      src: "/src/assets/Skills/ultimate.webp",
+      pos: "bottom-1/4 right-[7%] hidden lg:block",
+      delay: 2.4,
+    },
   ];
 
   return (
@@ -55,12 +79,22 @@ const HeroSection = () => {
         />
         <motion.div
           animate={{ scale: [1, 1.4, 1], opacity: [0.1, 0.3, 0.1] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5,
+          }}
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.25, 0.1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
           className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-accent/15 rounded-full blur-[80px]"
         />
       </motion.div>
@@ -77,7 +111,12 @@ const HeroSection = () => {
 
       {/* Floating ability icons */}
       {skillIcons.map((icon, i) => (
-        <FloatingIcon key={i} src={icon.src} className={icon.pos} delay={icon.delay} />
+        <FloatingIcon
+          key={i}
+          src={icon.src}
+          className={icon.pos}
+          delay={icon.delay}
+        />
       ))}
 
       {/* Content */}
@@ -102,7 +141,11 @@ const HeroSection = () => {
           className="mb-6"
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{
+            delay: 0.5,
+            duration: 1,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
         >
           <h1 className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
             ENTER THE ELLIPTICAL MATRIX

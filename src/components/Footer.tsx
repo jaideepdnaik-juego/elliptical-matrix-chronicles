@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Twitter, Youtube, Instagram, Globe } from "lucide-react";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.png";
+import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 const Footer = () => (
   <footer className="relative border-t border-border/30 px-6 py-16 overflow-hidden">
@@ -18,8 +18,8 @@ const Footer = () => (
             />
           </Link>
           <p className="text-foreground/60 text-sm leading-relaxed max-w-md">
-            Embark on an epic journey through The Elliptical Matrix™.
-            Secure the MINDKEYS™, face the Crimson Dragon, and become a legend.
+            Embark on an epic journey through The Elliptical Matrix™. Secure the
+            MINDKEYS™, face the Crimson Dragon, and become a legend.
           </p>
           <div className="flex gap-3 mt-6">
             {[
@@ -63,7 +63,10 @@ const Footer = () => (
             Get in Touch
           </h3>
           <div className="flex flex-col gap-3 text-xs text-muted-foreground">
-            <a href="mailto:info@ellipticalmatrix.com" className="hover:text-primary transition-colors">
+            <a
+              href="mailto:info@ellipticalmatrix.com"
+              className="hover:text-primary transition-colors"
+            >
               info@ellipticalmatrix.com
             </a>
             <p>Join our community for latest updates!</p>
@@ -76,9 +79,15 @@ const Footer = () => (
           © 2026 The Elliptical Matrix™. All rights reserved.
         </p>
         <div className="flex gap-6 text-xs text-muted-foreground/60">
-          <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-          <a href="#" className="hover:text-primary transition-colors">Terms</a>
-          <a href="#" className="hover:text-primary transition-colors">Contact</a>
+          <a href="#" className="hover:text-primary transition-colors">
+            Privacy
+          </a>
+          <a href="#" className="hover:text-primary transition-colors">
+            Terms
+          </a>
+          <a href="#" className="hover:text-primary transition-colors">
+            Contact
+          </a>
         </div>
       </div>
     </div>
