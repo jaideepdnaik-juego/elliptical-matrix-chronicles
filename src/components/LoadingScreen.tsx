@@ -1,14 +1,6 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
-import akiraIcon from "@/assets/Website Icons/Character/Akira.webp";
-import iboonkaIcon from "@/assets/Website Icons/Character/imbonka.webp";
-import kurtIcon from "@/assets/Website Icons/Character/Kurt.webp";
-import poojaIcon from "@/assets/Website Icons/Character/Pooja.webp";
-import mindkey1 from "@/assets/Website Icons/Mind Keys/Mindkey_1.webp";
-import mindkey2 from "@/assets/Website Icons/Mind Keys/Mindkey_2.webp";
-import mindkey3 from "@/assets/Website Icons/Mind Keys/Mindkey_3.webp";
-import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.webp";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -16,10 +8,6 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
-  const [currentIconIndex, setCurrentIconIndex] = useState(0);
-
-  const icons = [akiraIcon, iboonkaIcon, kurtIcon, poojaIcon];
-  const mindkeys = [mindkey1, mindkey2, mindkey3, mindkey4];
 
   useEffect(() => {
     // Simulate loading progress
@@ -34,16 +22,10 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       });
     }, 30);
 
-    // Rotate character icons
-    const iconInterval = setInterval(() => {
-      setCurrentIconIndex((prev) => (prev + 1) % icons.length);
-    }, 800);
-
     return () => {
       clearInterval(progressInterval);
-      clearInterval(iconInterval);
     };
-  }, []);
+  }, [onLoadingComplete]);
 
   return (
     <motion.div
@@ -76,80 +58,25 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center gap-8 px-6">
+      <div className="relative z-10 flex flex-col items-center gap-10 px-6">
         {/* Logo */}
         <motion.img
           src={logoImg}
           alt="Elliptical Matrix"
-          className="h-20 md:h-28 w-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.6)]"
+          className="h-24 md:h-36 w-auto object-contain"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          style={{
+            filter: 'drop-shadow(0 0 30px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 60px rgba(147, 51, 234, 0.4))'
+          }}
         />
-
-        {/* Character Icons Row */}
-        <div className="flex gap-4 md:gap-6">
-          {icons.map((icon, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: currentIconIndex === index ? 1 : 0.3,
-                scale: currentIconIndex === index ? 1.2 : 0.9,
-              }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
-              <img
-                src={icon}
-                alt={`Character ${index + 1}`}
-                className="w-12 h-12 md:w-16 md:h-16 object-contain"
-              />
-              {currentIconIndex === index && (
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full blur-xl"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-              )}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* MindKeys Icons */}
-        <div className="flex gap-3">
-          {mindkeys.map((mindkey, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + index * 0.1 }}
-            >
-              <motion.img
-                src={mindkey}
-                alt={`MindKey ${index + 1}`}
-                className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                animate={{
-                  rotate: [0, 360],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 2, repeat: Infinity, delay: index * 0.2 },
-                }}
-              />
-            </motion.div>
-          ))}
-        </div>
 
         {/* Loading Text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.3 }}
           className="text-center"
         >
           <p className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-blue-400 mb-2">
@@ -159,32 +86,64 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
             {progress < 30
               ? "Initializing Oracle Systems..."
               : progress < 60
-                ? "Securing MindKeys..."
+                ? "Connecting to The Grid..."
                 : progress < 90
-                  ? "Activating Characters..."
+                  ? "Preparing Experience..."
                   : "Almost Ready..."}
           </p>
         </motion.div>
 
-        {/* Progress Bar */}
-        <div className="w-full max-w-md">
-          <div className="relative h-2 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm border border-blue-500/20">
+        {/* Neon Loading Bar */}
+        <div className="w-full max-w-md space-y-3">
+          <div className="relative h-2 bg-gray-900/50 rounded-full overflow-hidden backdrop-blur-sm border border-blue-500/20">
+            {/* Main progress bar */}
             <motion.div
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
-              initial={{ width: "0%" }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.3 }}
+              className="absolute inset-y-0 left-0 rounded-full"
+              style={{
+                width: `${progress}%`,
+                background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)',
+                boxShadow: `
+                  0 0 20px rgba(59, 130, 246, 0.8),
+                  0 0 40px rgba(139, 92, 246, 0.6),
+                  0 0 60px rgba(236, 72, 153, 0.4),
+                  inset 0 0 20px rgba(255, 255, 255, 0.3)
+                `,
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             />
+            
+            {/* Animated glow overlay */}
             <motion.div
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-400/50 to-purple-400/50 rounded-full blur-sm"
-              initial={{ width: "0%" }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.3 }}
+              className="absolute inset-y-0 left-0 rounded-full"
+              style={{
+                width: `${progress}%`,
+                background: 'linear-gradient(90deg, rgba(59, 130, 246, 0.4) 0%, rgba(139, 92, 246, 0.4) 50%, rgba(236, 72, 153, 0.4) 100%)',
+                filter: 'blur(8px)',
+              }}
+              animate={{
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
           </div>
-          <div className="flex justify-between mt-2 text-xs text-muted-foreground font-mono">
-            <span>{progress}%</span>
-            <span>100%</span>
+          
+          {/* Progress Percentage */}
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-muted-foreground font-mono">0%</span>
+            <motion.span
+              className="text-lg md:text-xl font-mono font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+              key={progress}
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              {progress}%
+            </motion.span>
+            <span className="text-xs text-muted-foreground font-mono">100%</span>
           </div>
         </div>
       </div>
