@@ -7,6 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import { useState, useEffect, lazy, Suspense } from "react";
 import ParticleField from "./components/ParticleField";
 import LoadingScreen from "./components/LoadingScreen";
+import PreRegister from "./pages/PreRegister";
 
 // Lazy load pages for code-splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -43,8 +44,15 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
+  const [isPreRegistered, setIsPreRegistered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    // Check if user has already pre-registered
+    const registered = localStorage.getItem('em_preregistered') === 'true';
+    setIsPreRegistered(registered);
+  }, []);
 
   useEffect(() => {
     // Prevent scroll during loading
@@ -55,10 +63,27 @@ const App = () => {
     }
   }, [isLoading]);
 
+  const handlePreRegisterComplete = () => {
+    setIsPreRegistered(true);
+  };
+
   const handleLoadingComplete = () => {
     setIsLoading(false);
     setTimeout(() => setShowContent(true), 100);
   };
+
+  // Show pre-registration page if user hasn't registered
+  if (!isPreRegistered) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <PreRegister onRegisterComplete={handlePreRegisterComplete} />
+        </TooltipProvider>
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
