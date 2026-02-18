@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import TextReveal from "./TextReveal";
 
 import iboonkaImg from "@/assets/characters/iBoonka.webp";
@@ -12,15 +13,81 @@ import ultimateImg from "@/assets/Skills/ultimate.webp";
 import telekinesisImg from "@/assets/Skills/telekinesis.webp";
 
 const abilityIcons = [
-  { src: runImg, name: "Speed Run", angle: 0 },
-  { src: jumpImg, name: "Super Jump", angle: 60 },
-  { src: thunderImg, name: "Thunder", angle: 120 },
-  { src: earthquakeImg, name: "Earthquake", angle: 180 },
-  { src: ultimateImg, name: "Ultimate", angle: 240 },
-  { src: telekinesisImg, name: "Telekinesis", angle: 300 },
+  { 
+    src: runImg, 
+    name: "Speed Run", 
+    angle: 0,
+    description: "Harness kinetic energy to move at superhuman speeds. Dodge attacks, close gaps instantly, and outmaneuver any opponent.",
+    cooldown: "5s",
+    type: "Mobility"
+  },
+  { 
+    src: jumpImg, 
+    name: "Super Jump", 
+    angle: 60,
+    description: "Launch yourself skyward with devastating force. Reach impossible heights and rain down destruction from above.",
+    cooldown: "8s",
+    type: "Mobility"
+  },
+  { 
+    src: thunderImg, 
+    name: "Thunder Energy Blast", 
+    angle: 120,
+    description: "Channel raw electrical power through your MindKey. Unleash bolts of lightning that chain between enemies, devastating all in their path.",
+    cooldown: "12s",
+    type: "Attack"
+  },
+  { 
+    src: earthquakeImg, 
+    name: "Earthquake Stomp", 
+    angle: 180,
+    description: "Slam the ground with cosmic force, creating shockwaves that shatter enemy defenses and stagger all nearby foes.",
+    cooldown: "15s",
+    type: "AoE Attack"
+  },
+  { 
+    src: ultimateImg, 
+    name: "Ultimate Power", 
+    angle: 240,
+    description: "Fully awaken your Oracle potential. Combine all MindKey abilities into a devastating final attack that reshapes the battlefield.",
+    cooldown: "45s",
+    type: "Ultimate"
+  },
+  { 
+    src: telekinesisImg, 
+    name: "Telekinesis", 
+    angle: 300,
+    description: "Bend reality with your mind. Lift, throw, and manipulate objects and enemies at will. Control the battlefield itself.",
+    cooldown: "10s",
+    type: "Control"
+  },
 ];
 
 const CharactersPreview = () => {
+  const [selectedAbility, setSelectedAbility] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handleAbilityClick = (index: number) => {
+    setSelectedAbility(index);
+    setIsPaused(true);
+  };
+
+  const handleClose = () => {
+    setSelectedAbility(null);
+    setIsPaused(false);
+  };
+
+  // Handle Escape key to close description
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedAbility !== null) {
+        handleClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [selectedAbility]);
   return (
     <section
       id="characters"
@@ -103,8 +170,8 @@ const CharactersPreview = () => {
             return (
               <motion.div
                 key={ability.name}
-                className="absolute hidden md:flex"
-                animate={{ rotate: [ability.angle, ability.angle + 360] }}
+                className="absolute hidden md:flex pointer-events-none"
+                animate={isPaused ? {} : { rotate: [ability.angle, ability.angle + 360] }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 style={{
                   width: `${mdRadius * 2}px`,
@@ -114,21 +181,26 @@ const CharactersPreview = () => {
                 }}
               >
                 <motion.div
-                  animate={{ rotate: [-ability.angle, -(ability.angle + 360)] }}
+                  animate={isPaused ? {} : { rotate: [-ability.angle, -(ability.angle + 360)] }}
                   transition={{
                     duration: 25,
                     repeat: Infinity,
                     ease: "linear",
                   }}
-                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-glass-strong p-2 glow-border hover:glow-border-purple transition-all duration-300 cursor-default group">
+                  <div 
+                    onClick={() => handleAbilityClick(i)}
+                    className={`w-12 h-12 rounded-xl bg-glass-strong p-2 transition-all duration-300 cursor-pointer group ${
+                      selectedAbility === i ? 'glow-border-gold scale-110' : 'glow-border hover:glow-border-purple hover:scale-105'
+                    }`}
+                  >
                     <img
                       src={ability.src}
                       alt={ability.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain pointer-events-none"
                     />
-                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                       <span className="text-[10px] font-display text-primary uppercase tracking-wider">
                         {ability.name}
                       </span>
@@ -139,6 +211,74 @@ const CharactersPreview = () => {
             );
           })}
         </motion.div>
+
+        {/* Ability Description Panel */}
+        <AnimatePresence>
+          {selectedAbility !== null && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={handleClose}
+                className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+              />
+              
+              {/* Description Panel */}
+              <motion.div
+                initial={{ opacity: 0, x: 50, scale: 0.95 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 50, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-sm md:max-w-md"
+              >
+                <div className="relative bg-glass-strong rounded-2xl p-6 border border-primary/30 shadow-2xl">
+                  {/* Close button */}
+                  <button
+                    onClick={handleClose}
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg bg-muted/30 hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+
+                  {/* Ability Icon */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 rounded-xl bg-glass p-3 glow-border-gold shrink-0">
+                      <img
+                        src={abilityIcons[selectedAbility].src}
+                        alt={abilityIcons[selectedAbility].name}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-base md:text-lg text-primary tracking-wider mb-1 truncate">
+                        {abilityIcons[selectedAbility].name}
+                      </h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30">
+                          {abilityIcons[selectedAbility].type}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          CD: {abilityIcons[selectedAbility].cooldown}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-foreground/80 leading-relaxed">
+                    {abilityIcons[selectedAbility].description}
+                  </p>
+
+                  {/* Decorative glow */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-accent via-primary to-secondary rounded-2xl opacity-20 blur -z-10 animate-pulse-glow" />
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
         {/* View all characters button */}
         <motion.div
