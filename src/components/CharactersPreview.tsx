@@ -8,8 +8,6 @@ import iboonkaImg from "@/assets/characters/iBoonka.webp";
 import poojaImg from "@/assets/characters/Pooja.webp";
 import akiraImg from "@/assets/characters/Akira.webp";
 import kurtImg from "@/assets/characters/Kurt.webp";
-import runImg from "@/assets/Skills/run.webp";
-import jumpImg from "@/assets/Skills/jump.webp";
 import thunderImg from "@/assets/Skills/thunderEnergy blast.webp";
 import earthquakeImg from "@/assets/Skills/earthquake stomp.webp";
 import ultimateImg from "@/assets/Skills/ultimate.webp";
@@ -46,77 +44,91 @@ const characters = [
   },
 ];
 
-const abilityIcons = [
-  { 
-    src: runImg, 
-    name: "Speed Run", 
-    angle: 0,
-    description: "Harness kinetic energy to move at superhuman speeds. Dodge attacks, close gaps instantly, and outmaneuver any opponent.",
-    cooldown: "5s",
-    type: "Mobility"
-  },
-  { 
-    src: jumpImg, 
-    name: "Super Jump", 
-    angle: 60,
-    description: "Launch yourself skyward with devastating force. Reach impossible heights and rain down destruction from above.",
-    cooldown: "8s",
-    type: "Mobility"
-  },
-  { 
-    src: thunderImg, 
-    name: "Thunder Energy Blast", 
-    angle: 120,
-    description: "Channel raw electrical power through your MindKey. Unleash bolts of lightning that chain between enemies, devastating all in their path.",
-    cooldown: "12s",
-    type: "Attack"
-  },
-  { 
-    src: earthquakeImg, 
-    name: "Earthquake Stomp", 
-    angle: 180,
-    description: "Slam the ground with cosmic force, creating shockwaves that shatter enemy defenses and stagger all nearby foes.",
-    cooldown: "15s",
-    type: "AoE Attack"
-  },
-  { 
-    src: ultimateImg, 
-    name: "Ultimate Power", 
-    angle: 240,
-    description: "Fully awaken your Oracle potential. Combine all MindKey abilities into a devastating final attack that reshapes the battlefield.",
-    cooldown: "45s",
-    type: "Ultimate"
-  },
-  { 
-    src: telekinesisImg, 
-    name: "Telekinesis", 
-    angle: 300,
-    description: "Bend reality with your mind. Lift, throw, and manipulate objects and enemies at will. Control the battlefield itself.",
-    cooldown: "10s",
-    type: "Control"
-  },
-];
+const characterAbilities: Record<string, any[]> = {
+  "iBOONKA!": [
+    { 
+      src: telekinesisImg, 
+      name: "Telekinesis", 
+      angle: 0,
+      description: "With a mere flick of his hand, iBOONKA bends reality—lifting enemies and throwing them aside like weightless debris.",
+      cooldown: "10s",
+      type: "Control"
+    },
+    { 
+      src: thunderImg, 
+      name: "Thunderclap Energy Blast", 
+      angle: 90,
+      description: "Lightning gathers between his palms before erupting in a blinding wave that shocks and overwhelms everything ahead.",
+      cooldown: "12s",
+      type: "Attack"
+    },
+    { 
+      src: earthquakeImg, 
+      name: "Earthquake Stomp", 
+      angle: 180,
+      description: "One crushing stomp sends tremors across the ground, shaking enemies to their core and knocking them off balance.",
+      cooldown: "15s",
+      type: "AoE Attack"
+    },
+    { 
+      src: ultimateImg, 
+      name: "Cosmic Slam", 
+      angle: 270,
+      description: "iBOONKA ascends in pure telekinetic power, drags his target skyward, and slams them down—triggering a devastating multi-impact explosion.",
+      cooldown: "45s",
+      type: "Ultimate"
+    },
+  ],
+  "Pooja": [
+    { 
+      src: telekinesisImg, 
+      name: "Telekinesis", 
+      angle: 0,
+      description: "Unseen forces answer Pooja's command—one gesture is all it takes to lift and hurl enemies helplessly through the air.",
+      cooldown: "10s",
+      type: "Control"
+    },
+    { 
+      src: thunderImg, 
+      name: "Hyper Beam (Furoo Assist)", 
+      angle: 120,
+      description: "Furoo steps forward, eyes locked. In a flash, he unleashes a devastating beam that tears through anything in its path.",
+      cooldown: "15s",
+      type: "Attack"
+    },
+    { 
+      src: ultimateImg, 
+      name: "Cosmic Rattle Burst", 
+      angle: 240,
+      description: "With a playful raise of her rattle, Pooja summons a massive energy sphere—while Furoo strikes in a lightning-fast bite combo before the final explosive finish.",
+      cooldown: "45s",
+      type: "Ultimate"
+    },
+  ],
+};
 
 const CharactersPreview = () => {
   const [selectedAbility, setSelectedAbility] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
   const [currentCharacter, setCurrentCharacter] = useState(0);
+
+  // Get abilities for current character
+  const currentAbilities = characterAbilities[characters[currentCharacter].name] || [];
 
   const handleAbilityClick = (index: number) => {
     setSelectedAbility(index);
-    setIsPaused(true);
   };
 
   const handleClose = () => {
     setSelectedAbility(null);
-    setIsPaused(false);
   };
 
   const handlePrevCharacter = () => {
+    setSelectedAbility(null); // Close ability description when changing characters
     setCurrentCharacter((prev) => (prev === 0 ? characters.length - 1 : prev - 1));
   };
 
   const handleNextCharacter = () => {
+    setSelectedAbility(null); // Close ability description when changing characters
     setCurrentCharacter((prev) => (prev === characters.length - 1 ? 0 : prev + 1));
   };
 
@@ -274,7 +286,10 @@ const CharactersPreview = () => {
             {characters.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentCharacter(index)}
+                onClick={() => {
+                  setSelectedAbility(null); // Close ability description when changing characters
+                  setCurrentCharacter(index);
+                }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentCharacter 
                     ? 'w-8 bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)]' 
@@ -286,14 +301,14 @@ const CharactersPreview = () => {
           </div>
 
           {/* Orbiting ability icons - Only for available characters */}
-          {characters[currentCharacter].available && abilityIcons.map((ability, i) => {
+          {characters[currentCharacter].available && currentAbilities.map((ability, i) => {
             const radius = 205; // Between inner (190) and outer (220) circles
             const mdRadius = 267; // Between inner (250) and outer (285) circles
             return (
               <motion.div
                 key={ability.name}
                 className="absolute hidden md:flex pointer-events-none"
-                animate={isPaused ? {} : { rotate: [ability.angle, ability.angle + 360] }}
+                animate={{ rotate: [ability.angle, ability.angle + 360] }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 style={{
                   width: `${mdRadius * 2}px`,
@@ -303,7 +318,7 @@ const CharactersPreview = () => {
                 }}
               >
                 <motion.div
-                  animate={isPaused ? {} : { rotate: [-ability.angle, -(ability.angle + 360)] }}
+                  animate={{ rotate: [-ability.angle, -(ability.angle + 360)] }}
                   transition={{
                     duration: 25,
                     repeat: Infinity,
@@ -369,21 +384,21 @@ const CharactersPreview = () => {
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-xl bg-glass p-3 glow-border-gold shrink-0">
                       <img
-                        src={abilityIcons[selectedAbility].src}
-                        alt={abilityIcons[selectedAbility].name}
+                        src={currentAbilities[selectedAbility].src}
+                        alt={currentAbilities[selectedAbility].name}
                         className="w-full h-full object-contain"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-display text-base md:text-lg text-primary tracking-wider mb-1 truncate">
-                        {abilityIcons[selectedAbility].name}
+                        {currentAbilities[selectedAbility].name}
                       </h3>
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30">
-                          {abilityIcons[selectedAbility].type}
+                          {currentAbilities[selectedAbility].type}
                         </span>
                         <span className="text-xs text-muted-foreground">
-                          CD: {abilityIcons[selectedAbility].cooldown}
+                          CD: {currentAbilities[selectedAbility].cooldown}
                         </span>
                       </div>
                     </div>
@@ -391,7 +406,7 @@ const CharactersPreview = () => {
 
                   {/* Description */}
                   <p className="text-sm text-foreground/80 leading-relaxed">
-                    {abilityIcons[selectedAbility].description}
+                    {currentAbilities[selectedAbility].description}
                   </p>
 
                   {/* Decorative glow */}
