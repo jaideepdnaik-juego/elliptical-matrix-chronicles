@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import TextReveal from "@/components/TextReveal";
-import mindkeysImg from "@/assets/mindkeys.webp";
 
 const mindkeys = [
   {
@@ -134,7 +133,7 @@ const MindKeys = () => {
             </motion.div>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </PageTransition>
   );

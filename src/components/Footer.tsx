@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Twitter, Youtube, Instagram, Globe } from "lucide-react";
+import { X, Youtube, Instagram, Globe } from "lucide-react";
 
 const Footer = () => (
   <footer className="relative border-t border-border/30 px-6 py-16 overflow-hidden">
@@ -27,14 +27,15 @@ const Footer = () => (
       {/* Social Media Icons */}
       <div className="flex gap-3 justify-center mb-12">
         {[
-          { icon: Twitter, href: "#" },
-          { icon: Youtube, href: "#" },
-          { icon: Instagram, href: "#" },
-          { icon: Globe, href: "#" },
+          { icon: X, href: "#", label: "X (Twitter)" },
+          { icon: Youtube, href: "#", label: "YouTube" },
+          { icon: Instagram, href: "#", label: "Instagram" },
+          { icon: Globe, href: "#", label: "Website" },
         ].map((social, i) => (
           <motion.a
             key={i}
             href={social.href}
+            aria-label={social.label}
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="w-10 h-10 flex items-center justify-center rounded-full bg-glass border border-primary/20 text-muted-foreground hover:text-primary hover:border-primary/40 transition-all"

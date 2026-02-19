@@ -143,7 +143,7 @@ const Lore = () => {
             </motion.div>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </PageTransition>
   );

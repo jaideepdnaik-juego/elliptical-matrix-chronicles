@@ -254,7 +254,7 @@ const Characters = () => {
             </div>
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </PageTransition>
   );
