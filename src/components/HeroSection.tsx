@@ -111,7 +111,7 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-3 mb-6"
         >
           <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
-          <p className="font-display text-xs md:text-sm uppercase text-primary tracking-[0.4em] text-glow-cyan">
+          <p className="font-display text-sm md:text-base uppercase text-primary tracking-[0.4em] text-glow-cyan">
             Story One
           </p>
           <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary" />

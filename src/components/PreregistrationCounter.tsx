@@ -64,7 +64,7 @@ const PreregistrationCounter = () => {
         >
           <div className="flex items-center justify-center gap-2 mb-8">
             <Flame className="w-5 h-5 text-accent" />
-            <p className="font-display text-xs uppercase text-accent tracking-[0.4em] text-glow-gold">
+            <p className="font-display text-sm md:text-base uppercase text-accent tracking-[0.4em] text-glow-gold">
               Join the Movement
             </p>
             <Flame className="w-5 h-5 text-accent" />

@@ -45,26 +45,19 @@ const GameplayFeatures = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-4"
+            className="flex items-center justify-center gap-3 mb-2"
           >
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-accent" />
-            <p className="font-display text-xs tracking-[0.4em] uppercase text-accent text-glow-gold">
+            <p className="font-display text-sm md:text-base tracking-[0.4em] uppercase text-accent text-glow-gold">
               Awaken Powers
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-accent" />
           </motion.div>
-
-          <TextReveal
-            as="h2"
-            className="font-display text-4xl md:text-6xl font-black bg-gradient-to-r from-accent via-golden-energy to-accent bg-clip-text text-transparent mb-6"
-          >
-            Gameplay Features
-          </TextReveal>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

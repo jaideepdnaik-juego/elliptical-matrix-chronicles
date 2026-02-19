@@ -44,7 +44,7 @@ const MindKeys = () => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", damping: 10 }}
-                className="font-display text-sm tracking-[0.3em] uppercase text-accent mb-3"
+                className="font-display text-sm md:text-base tracking-[0.3em] uppercase text-accent mb-3"
               >
                 Cosmic Relics
               </motion.p>
@@ -122,7 +122,7 @@ const MindKeys = () => {
               <motion.p
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ repeat: Infinity, duration: 2 }}
-                className="font-display text-sm tracking-[0.3em] uppercase text-accent mb-2 text-glow-crimson"
+                className="font-display text-sm md:text-base tracking-[0.3em] uppercase text-accent mb-2 text-glow-crimson"
               >
                 ⚠ Warning
               </motion.p>

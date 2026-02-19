@@ -141,7 +141,7 @@ const CharacterDetail = ({
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="font-display text-xs tracking-[0.3em] uppercase text-accent mb-2"
+            className="font-display text-sm tracking-[0.3em] uppercase text-accent mb-2"
           >
             {char.world}
           </motion.p>
@@ -153,7 +153,7 @@ const CharacterDetail = ({
             {char.description}
           </p>
           <div>
-            <p className="font-display text-xs tracking-[0.2em] uppercase text-foreground/60 mb-3">
+            <p className="font-display text-sm tracking-[0.2em] uppercase text-foreground/60 mb-3">
               Abilities
             </p>
             <div className="flex flex-wrap gap-2">
@@ -189,7 +189,7 @@ const Characters = () => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", damping: 10 }}
-                className="font-display text-sm tracking-[0.3em] uppercase text-primary mb-3"
+                className="font-display text-sm md:text-base tracking-[0.3em] uppercase text-primary mb-3"
               >
                 The Oracles
               </motion.p>

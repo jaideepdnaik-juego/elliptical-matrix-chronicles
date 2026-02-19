@@ -167,10 +167,10 @@ const CharactersPreview = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-4"
+            className="flex items-center justify-center gap-3 mb-2"
           >
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary" />
-            <p className="font-display text-xs tracking-[0.4em] uppercase text-primary text-glow-cyan">
+            <p className="font-display text-sm md:text-base tracking-[0.4em] uppercase text-primary text-glow-cyan">
               The Oracles
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary" />

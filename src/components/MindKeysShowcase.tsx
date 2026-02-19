@@ -53,26 +53,19 @@ const MindKeysShowcase = () => {
       <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[120px] animate-float-orb" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-4"
+            className="flex items-center justify-center gap-3 mb-2"
           >
             <Crown className="w-5 h-5 text-accent" />
-            <p className="font-display text-xs tracking-[0.4em] uppercase text-accent text-glow-gold">
+            <p className="font-display text-sm md:text-base tracking-[0.4em] uppercase text-accent text-glow-gold">
               Legendary Artifacts
             </p>
             <Crown className="w-5 h-5 text-accent" />
           </motion.div>
-
-          <TextReveal
-            as="h2"
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-accent via-golden-energy to-accent bg-clip-text text-transparent mb-6 text-glow-gold"
-          >
-            The MINDKEYS™
-          </TextReveal>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

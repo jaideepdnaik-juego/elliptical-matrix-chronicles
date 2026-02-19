@@ -20,14 +20,14 @@ const LoreTrailerSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex items-center justify-center gap-3 mb-2">
             <div className="h-px w-8 bg-gradient-to-r from-transparent to-secondary" />
-            <p className="font-display text-xs uppercase text-secondary tracking-[0.4em] text-glow-purple">
+            <p className="font-display text-sm md:text-base uppercase text-secondary tracking-[0.4em] text-glow-purple">
               Discover the Legend
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-secondary" />
           </div>
-          <h2 className="font-display text-4xl md:text-6xl font-black bg-gradient-to-r from-secondary via-energy-purple to-primary bg-clip-text text-transparent mb-4">
+          <h2 className="font-display text-4xl md:text-6xl font-black bg-gradient-to-r from-secondary via-energy-purple to-primary bg-clip-text text-transparent mb-3">
             The Lore Awaits
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

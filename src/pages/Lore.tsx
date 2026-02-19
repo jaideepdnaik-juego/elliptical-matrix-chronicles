@@ -52,7 +52,7 @@ const Lore = () => {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", damping: 10 }}
-                className="font-display text-sm tracking-[0.3em] uppercase text-primary mb-3"
+                className="font-display text-sm md:text-base tracking-[0.3em] uppercase text-primary mb-3"
               >
                 The Chronicles
               </motion.p>
@@ -105,7 +105,7 @@ const Lore = () => {
                       transition={{ duration: 0.3 }}
                       className="bg-glass rounded-xl p-6 md:p-8 glow-border cursor-default"
                     >
-                      <p className="font-display text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                      <p className="font-display text-sm tracking-[0.2em] uppercase text-muted-foreground mb-2">
                         Chapter {i + 1}
                       </p>
                       <h3
