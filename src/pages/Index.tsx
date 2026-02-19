@@ -6,7 +6,6 @@ import CharactersPreview from "@/components/CharactersPreview";
 import GameplayFeatures from "@/components/GameplayFeatures";
 import MindKeysShowcase from "@/components/MindKeysShowcase";
 import LoreTrailerSection from "@/components/LoreTrailerSection";
-import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 
@@ -22,7 +21,6 @@ const Index = () => {
         <CharactersPreview />
         <GameplayFeatures />
         <MindKeysShowcase />
-        <CTASection />
         <Footer />
       </div>
     </PageTransition>
