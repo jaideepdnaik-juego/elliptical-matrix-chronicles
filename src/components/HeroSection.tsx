@@ -58,7 +58,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-start justify-center overflow-hidden pt-24 md:pt-16">
       {/* Cinematic Background */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <video
@@ -110,7 +110,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 1 }}
-          className="flex items-center justify-center gap-3 mb-6"
+          className="flex items-center justify-center gap-3 mb-3"
         >
           <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary" />
           <p className="font-display text-sm md:text-base uppercase text-primary tracking-[0.4em] text-glow-cyan">
@@ -120,7 +120,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="mb-6 flex flex-col items-center justify-center gap-3"
+          className="mb-4 flex flex-col items-center justify-center gap-2"
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{
@@ -129,13 +129,13 @@ const HeroSection = () => {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <h1 className="font-display text-2xl md:text-4xl lg:text-5xl font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
+          <h1 className="font-display text-xl md:text-3xl lg:text-4xl font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
             ENTER THE
           </h1>
           <motion.img
             src={"./assets/Elliptical Matrix_Title 1.webp"}
             alt="Elliptical Matrix"
-            className="w-[60%] max-w-2xl h-auto object-contain"
+            className="w-[45%] max-w-xl h-auto object-contain"
             style={{
               filter: 'drop-shadow(0 0 30px hsl(var(--primary)/0.8)) drop-shadow(0 0 60px hsl(var(--glow-cyan)/0.6)) drop-shadow(0 0 90px hsl(var(--glow-blue)/0.4))',
             }}
@@ -158,7 +158,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="text-lg md:text-2xl text-foreground/90 max-w-2xl mx-auto mb-3 font-exo font-medium leading-relaxed"
+          className="text-lg md:text-2xl text-foreground/90 max-w-2xl mx-auto mb-3 font-exo font-medium leading-relaxed mt-8 md:mt-24"
         >
           Unlock ancient powers. Travel across worlds. Become the chosen Oracle.
         </motion.p>
