@@ -162,7 +162,7 @@ const CharactersPreview = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-48">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -175,23 +175,6 @@ const CharactersPreview = () => {
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
-
-          <TextReveal
-            as="h2"
-            className="font-display text-4xl md:text-6xl font-black bg-gradient-to-r from-primary via-neon-cyan to-secondary bg-clip-text text-transparent mb-4"
-          >
-            Master Elemental Powers
-          </TextReveal>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-          >
-            Master Elemental Powers & Combat Styles
-          </motion.p>
         </div>
 
         {/* Center character with orbiting abilities */}
@@ -415,23 +398,6 @@ const CharactersPreview = () => {
             </>
           )}
         </AnimatePresence>
-
-        {/* View all characters button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-center"
-        >
-          <Link
-            to="/characters"
-            className="inline-flex items-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase glow-border bg-primary/10 text-primary rounded-xl hover:bg-primary/20 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)]"
-          >
-            <Sparkles className="w-4 h-4" />
-            View All Characters
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

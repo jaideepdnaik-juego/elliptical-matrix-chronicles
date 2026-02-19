@@ -14,9 +14,36 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Orbitron", "sans-serif"],
-        body: ["Rajdhani", "sans-serif"],
-        exo: ["Exo 2", "sans-serif"],
+        // 🎮 ACTIVE FONT COMBO - Change the values below to switch fonts
+        // display: ["Audiowide", "sans-serif"],
+        // body: ["Saira", "sans-serif"],   
+      
+        // 📦 ALL AVAILABLE OPTIONS (uncomment and swap above to change):
+        // Option 1: Modern Clean Sci-Fi
+        display: ["Space Grotesk", "sans-serif"],
+        body: ["Inter", "sans-serif"],
+        
+        // Option 2: Bold Retro-Futuristic (CURRENT) ⭐
+        // display: ["Audiowide", "sans-serif"],
+        // body: ["Saira", "sans-serif"],
+        
+        // Option 3: Chunky Gaming Energy
+        // display: ["Russo One", "sans-serif"],
+        // body: ["Oxanium", "sans-serif"],
+        
+        // Option 4: Cyberpunk Anime
+        // display: ["Michroma", "sans-serif"],
+        // body: ["Chakra Petch", "sans-serif"],
+        
+        // Individual font access (use with font-[name] classes)
+        'space-grotesk': ["Space Grotesk", "sans-serif"],
+        'inter': ["Inter", "sans-serif"],
+        'audiowide': ["Audiowide", "sans-serif"],
+        'saira': ["Saira", "sans-serif"],
+        'russo': ["Russo One", "sans-serif"],
+        'oxanium': ["Oxanium", "sans-serif"],
+        'michroma': ["Michroma", "sans-serif"],
+        'chakra': ["Chakra Petch", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
