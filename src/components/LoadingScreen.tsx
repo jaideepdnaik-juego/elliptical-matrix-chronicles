@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -61,7 +60,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       <div className="relative z-10 flex flex-col items-center gap-10 px-6">
         {/* Logo */}
         <motion.img
-          src={logoImg}
+          src={"./assets/Elliptical Matrix_Title 1.webp"}
           alt="Elliptical Matrix"
           className="h-24 md:h-36 w-auto object-contain"
           initial={{ opacity: 0, y: -20 }}

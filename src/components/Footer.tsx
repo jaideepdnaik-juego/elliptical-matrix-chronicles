@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Twitter, Youtube, Instagram, Globe } from "lucide-react";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 const Footer = () => (
   <footer className="relative border-t border-border/30 px-6 py-16 overflow-hidden">
@@ -12,7 +11,7 @@ const Footer = () => (
       <div className="flex justify-center mb-6">
         <Link to="/" className="inline-block">
           <img
-            src={logoImg}
+            src={"./assets/Elliptical Matrix_Title 1.webp"}
             alt="Elliptical Matrix"
             className="h-16 w-auto object-contain drop-shadow-[0_0_20px_hsl(var(--primary)/0.5)]"
           />

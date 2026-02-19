@@ -1,9 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Sparkles, Play, Smartphone, Download } from "lucide-react";
+import { Smartphone, Download } from "lucide-react";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
-import heroBg from "@/assets/hero-cinematic.webp";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 // Floating ability icon component
 const FloatingIcon = ({
@@ -38,22 +36,22 @@ const HeroSection = () => {
   // Import skill icons for floating elements
   const skillIcons = [
     {
-      src: "/src/assets/Skills/thunderEnergy blast.webp",
+      src: "./assets/Skills/thunder-energy-blast.webp",
       pos: "top-1/4 left-[8%] hidden md:block",
       delay: 0,
     },
     {
-      src: "/src/assets/Skills/telekinesis.webp",
+      src: "./assets/Skills/telekinesis.webp",
       pos: "top-1/3 right-[10%] hidden md:block",
       delay: 0.8,
     },
     {
-      src: "/src/assets/Skills/earthquake stomp.webp",
+      src: "./assets/Skills/earthquake-stomp.webp",
       pos: "bottom-1/3 left-[5%] hidden lg:block",
       delay: 1.6,
     },
     {
-      src: "/src/assets/Skills/ultimate.webp",
+      src: "./assets/Skills/ultimate.webp",
       pos: "bottom-1/4 right-[7%] hidden lg:block",
       delay: 2.4,
     },
@@ -64,7 +62,7 @@ const HeroSection = () => {
       {/* Cinematic Background */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
-          src={heroBg}
+          src={"./assets/hero-cinematic.webp"}
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -131,7 +129,7 @@ const HeroSection = () => {
             ENTER THE
           </h1>
           <motion.img
-            src={logoImg}
+            src={"./assets/Elliptical Matrix_Title 1.webp"}
             alt="Elliptical Matrix"
             className="w-[80%] max-w-3xl h-auto object-contain"
             style={{

@@ -16,36 +16,36 @@ import ultimateImg from "@/assets/Skills/ultimate.webp";
 const characters = [
   {
     name: "iBOONKA!",
-    image: iboonkaImg,
+    image: "./assets/characters/iBoonka.webp",
     role: "Team Leader & Oracle",
     description:
       "The fearless blue-skinned alien who leads the JUMP Strings! With cosmic antennae that sense dimensional rifts and a MindKey crystal embedded in his chest, iBOONKA! channels raw celestial energy. His sunglasses aren't just cool — they filter hyperdimensional light that would blind ordinary beings.",
     abilities: [
-      { src: telekinesisImg, name: "Telekinesis" },
-      { src: thunderImg, name: "Thunderclap Energy Blast" },
-      { src: earthquakeImg, name: "Earthquake Stomp" },
-      { src: ultimateImg, name: "Cosmic Slam" },
+      { src: "./assets/Skills/telekinesis.webp", name: "Telekinesis" },
+      { src: "./assets/Skills/thunder-energy-blast.webp", name: "Thunderclap Energy Blast" },
+      { src: "./assets/Skills/earthquake-stomp.webp", name: "Earthquake Stomp" },
+      { src: "./assets/Skills/ultimate.webp", name: "Cosmic Slam" },
     ],
     world: "BOONKA! Land",
     available: true,
   },
   {
     name: "Pooja",
-    image: poojaImg,
+    image: "./assets/characters/Pooja.webp",
     role: "Mystic Navigator",
     description:
       "The youngest but most powerful mystic of the group, Pooja's oversized eyes see across all dimensions simultaneously. Her golden Oracle pendant lets her communicate with ancient cosmic entities. She guides the CTV Najja Starship through impossible routes.",
     abilities: [
-      { src: telekinesisImg, name: "Telekinesis" },
-      { src: thunderImg, name: "Hyper Beam (Furoo Assist)" },
-      { src: ultimateImg, name: "Cosmic Rattle Burst" },
+      { src: "./assets/Skills/telekinesis.webp", name: "Telekinesis" },
+      { src: "./assets/Skills/thunder-energy-blast.webp", name: "Hyper Beam (Furoo Assist)" },
+      { src: "./assets/Skills/ultimate.webp", name: "Cosmic Rattle Burst" },
     ],
     world: "Mysterium Tremendum",
     available: true,
   },
   {
     name: "Akira",
-    image: akiraImg,
+    image: "./assets/characters/Akira.webp",
     role: "Energy Channeler",
     description:
       "A brilliant warrior from Future Earth, Akira wields spiral energy through her crystalline armor. Her pink boots generate anti-gravity fields, and her shoulder plates act as energy conductors that can redirect any attack. She's the team's tactical genius.",
@@ -55,7 +55,7 @@ const characters = [
   },
   {
     name: "Kurt",
-    image: kurtImg,
+    image: "./assets/characters/Kurt.webp",
     role: "Shield Guardian",
     description:
       "Earth's strongest defender, Kurt's green boots root him to any planetary core, making him immovable. His vest channels nature's energy across all four worlds. A kind heart behind incredible strength — Kurt protects the team at any cost.",
@@ -254,7 +254,7 @@ const Characters = () => {
             </div>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </PageTransition>
   );

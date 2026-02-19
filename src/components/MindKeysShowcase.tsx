@@ -11,7 +11,7 @@ import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.webp";
 const mindkeys = [
   {
     name: "Alpha MindKey",
-    image: mindkey1,
+    image: "./assets/Website Icons/Mind Keys/Mindkey_1.webp",
     element: "Creation",
     color: "from-primary to-neon-cyan",
     power: "Time Manipulation",
@@ -19,7 +19,7 @@ const mindkeys = [
   },
   {
     name: "Beta MindKey",
-    image: mindkey2,
+    image: "./assets/Website Icons/Mind Keys/Mindkey_2.webp",
     element: "Destruction",
     color: "from-red-500 to-rose-400",
     power: "Reality Warping",
@@ -27,7 +27,7 @@ const mindkeys = [
   },
   {
     name: "Gamma MindKey",
-    image: mindkey3,
+    image: "./assets/Website Icons/Mind Keys/Mindkey_3.webp",
     element: "Spirit",
     color: "from-secondary to-energy-purple",
     power: "Dimensional Travel",
@@ -35,7 +35,7 @@ const mindkeys = [
   },
   {
     name: "Shadow MindKey",
-    image: mindkey4,
+    image: "./assets/Website Icons/Mind Keys/Mindkey_4.webp",
     element: "Light",
     color: "from-accent to-amber-400",
     power: "Cosmic Force",

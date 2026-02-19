@@ -5,40 +5,31 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import TextReveal from "./TextReveal";
 
-import iboonkaImg from "@/assets/characters/iBoonka.webp";
-import poojaImg from "@/assets/characters/Pooja.webp";
-import akiraImg from "@/assets/characters/Akira.webp";
-import kurtImg from "@/assets/characters/Kurt.webp";
-import thunderImg from "@/assets/Skills/thunder-energy-blast.webp";
-import earthquakeImg from "@/assets/Skills/earthquake-stomp.webp";
-import ultimateImg from "@/assets/Skills/ultimate.webp";
-import telekinesisImg from "@/assets/Skills/telekinesis.webp";
-
 const characters = [
   {
     name: "iBOONKA!",
-    image: iboonkaImg,
+    image: "./assets/characters/iBoonka.webp",
     title: "The Cosmic Oracle",
     element: "Thunder & Earth",
     available: true
   },
   {
     name: "Pooja",
-    image: poojaImg,
+    image: "./assets/characters/Pooja.webp",
     title: "The Mystic Sage",
     element: "Mind & Spirit",
     available: true
   },
   {
     name: "Akira",
-    image: akiraImg,
+    image: "./assets/characters/Akira.webp" ,
     title: "The Shadow Striker",
     element: "Fire & Wind",
     available: false
   },
   {
     name: "Kurt",
-    image: kurtImg,
+    image: "./assets/characters/Kurt.webp",
     title: "The Iron Guardian",
     element: "Metal & Ice",
     available: false
@@ -48,7 +39,7 @@ const characters = [
 const characterAbilities: Record<string, any[]> = {
   "iBOONKA!": [
     { 
-      src: telekinesisImg, 
+      src: "./assets/Skills/telekinesis.webp", 
       name: "Telekinesis", 
       angle: 0,
       description: "With a mere flick of his hand, iBOONKA bends reality—lifting enemies and throwing them aside like weightless debris.",
@@ -56,7 +47,7 @@ const characterAbilities: Record<string, any[]> = {
       type: "Control"
     },
     { 
-      src: thunderImg, 
+      src: "./assets/Skills/thunder-energy-blast.webp", 
       name: "Thunderclap Energy Blast", 
       angle: 90,
       description: "Lightning gathers between his palms before erupting in a blinding wave that shocks and overwhelms everything ahead.",
@@ -64,7 +55,7 @@ const characterAbilities: Record<string, any[]> = {
       type: "Attack"
     },
     { 
-      src: earthquakeImg, 
+      src: "./assets/Skills/earthquake-stomp.webp", 
       name: "Earthquake Stomp", 
       angle: 180,
       description: "One crushing stomp sends tremors across the ground, shaking enemies to their core and knocking them off balance.",
@@ -72,7 +63,7 @@ const characterAbilities: Record<string, any[]> = {
       type: "AoE Attack"
     },
     { 
-      src: ultimateImg, 
+      src: "./assets/Skills/ultimate.webp", 
       name: "Cosmic Slam", 
       angle: 270,
       description: "iBOONKA ascends in pure telekinetic power, drags his target skyward, and slams them down—triggering a devastating multi-impact explosion.",
@@ -82,7 +73,7 @@ const characterAbilities: Record<string, any[]> = {
   ],
   "Pooja": [
     { 
-      src: telekinesisImg, 
+      src: "./assets/Skills/telekinesis.webp", 
       name: "Telekinesis", 
       angle: 0,
       description: "Unseen forces answer Pooja's command—one gesture is all it takes to lift and hurl enemies helplessly through the air.",
@@ -90,7 +81,7 @@ const characterAbilities: Record<string, any[]> = {
       type: "Control"
     },
     { 
-      src: thunderImg, 
+      src: "./assets/Skills/thunder-energy-blast.webp", 
       name: "Hyper Beam (Furoo Assist)", 
       angle: 120,
       description: "Furoo steps forward, eyes locked. In a flash, he unleashes a devastating beam that tears through anything in its path.",
@@ -98,7 +89,7 @@ const characterAbilities: Record<string, any[]> = {
       type: "Attack"
     },
     { 
-      src: ultimateImg, 
+      src: "./assets/Skills/ultimate.webp", 
       name: "Cosmic Rattle Burst", 
       angle: 240,
       description: "With a playful raise of her rattle, Pooja summons a massive energy sphere—while Furoo strikes in a lightning-fast bite combo before the final explosive finish.",

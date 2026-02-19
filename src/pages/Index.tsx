@@ -21,7 +21,7 @@ const Index = () => {
         <CharactersPreview />
         <GameplayFeatures />
         <MindKeysShowcase />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </PageTransition>
   );

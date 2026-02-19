@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 import { Mail, Sparkles, X } from "lucide-react";
 
 interface PreRegisterProps {
@@ -90,7 +89,7 @@ const PreRegister = ({ onRegisterComplete }: PreRegisterProps) => {
           className="flex justify-center mb-6 md:mb-8"
         >
           <img
-            src={logoImg}
+            src={"./assets/Elliptical Matrix_Title 1.webp"}
             alt="Elliptical Matrix"
             className="h-16 md:h-20 w-auto object-contain"
             style={{

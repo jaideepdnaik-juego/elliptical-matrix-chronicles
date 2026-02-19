@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -39,7 +38,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="relative group">
           <motion.img
-            src={logoImg}
+            src={"./assets/Elliptical Matrix_Title 1.webp"}
             alt="Elliptical Matrix"
             className="h-10 md:h-14 w-auto object-contain drop-shadow-[0_0_20px_hsl(var(--primary)/0.4)] transition-all duration-300 group-hover:drop-shadow-[0_0_30px_hsl(var(--secondary)/0.5)]"
             whileHover={{ scale: 1.05 }}

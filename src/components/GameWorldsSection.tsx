@@ -2,15 +2,10 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import TextReveal from "./TextReveal";
 
-import boonkalandImg from "@/assets/worlds/BOONKALAND.webp";
-import californiaCityImg from "@/assets/worlds/CALIFORNIA CITY.webp";
-import chinaCityImg from "@/assets/worlds/CHINA CITY.webp";
-import dynaWorldImg from "@/assets/worlds/DYNA WORLD.webp";
-
 const worlds = [
   {
     name: "BOONKA! Land",
-    image: boonkalandImg,
+    image: "./assets/worlds/BOONKALAND.webp",
     tagline: "A vibrant world where gravity defies logic and ancient constructs guard celestial power.",
     color: "from-amber-400 to-orange-500",
     glowHsl: "30 100% 55%",
@@ -18,7 +13,7 @@ const worlds = [
   },
   {
     name: "China City",
-    image: chinaCityImg,
+    image: "./assets/worlds/CHINA CITY.webp",
     tagline: "Ancient wisdom flows through neon-lit streets. Tradition meets the future.",
     color: "from-secondary to-energy-purple",
     glowHsl: "249 100% 71%",
@@ -26,7 +21,7 @@ const worlds = [
   },
   {
     name: "California City",
-    image: californiaCityImg,
+    image: "./assets/worlds/CALIFORNIA CITY.webp",
     tagline: "Modern metropolis meets mystical energy. Where technology and magic intertwine.",
     color: "from-primary to-neon-cyan",
     glowHsl: "193 100% 65%",
@@ -34,7 +29,7 @@ const worlds = [
   },
   {
     name: "Dyna World",
-    image: dynaWorldImg,
+    image: "./assets/worlds/DYNA WORLD.webp",
     tagline: "Crystal caverns pulse with cosmic energy. The birthplace of the first MindKey.",
     color: "from-primary to-blue-500",
     glowHsl: "210 100% 60%",

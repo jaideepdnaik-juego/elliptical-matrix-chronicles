@@ -70,7 +70,7 @@ const MindKeys = () => {
               className="mb-20 rounded-2xl overflow-hidden glow-border"
               style={{ transformPerspective: 1000 }}
             >
-              <img src={mindkeysImg} alt="The Four MindKeys" className="w-full h-auto" />
+              <img src={"./assets/MindKeys/TheFourMindKeys.webp"} alt="The Four MindKeys" className="w-full h-auto" />
             </motion.div>
 
             {/* MindKey Cards */}
@@ -134,7 +134,7 @@ const MindKeys = () => {
             </motion.div>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </PageTransition>
   );
