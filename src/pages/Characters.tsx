@@ -9,8 +9,8 @@ import iboonkaImg from "@/assets/characters/iBoonka.webp";
 import kurtImg from "@/assets/characters/Kurt.webp";
 import poojaImg from "@/assets/characters/Pooja.webp";
 import telekinesisImg from "@/assets/Skills/telekinesis.webp";
-import thunderImg from "@/assets/Skills/thunderEnergy blast.webp";
-import earthquakeImg from "@/assets/Skills/earthquake stomp.webp";
+import thunderImg from "@/assets/Skills/thunder-energy-blast.webp";
+import earthquakeImg from "@/assets/Skills/earthquake-stomp.webp";
 import ultimateImg from "@/assets/Skills/ultimate.webp";
 
 const characters = [
