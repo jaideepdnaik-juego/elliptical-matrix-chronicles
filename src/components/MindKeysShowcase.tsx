@@ -10,7 +10,7 @@ import mindkey4 from "@/assets/Website Icons/Mind Keys/Mindkey_4.webp";
 
 const mindkeys = [
   {
-    name: "Genesis Key",
+    name: "Alpha MindKey",
     image: mindkey1,
     element: "Creation",
     color: "from-primary to-neon-cyan",
@@ -18,7 +18,7 @@ const mindkeys = [
     description: "The first key. Born from the cosmic dawn.",
   },
   {
-    name: "Crimson Key",
+    name: "Beta MindKey",
     image: mindkey2,
     element: "Destruction",
     color: "from-red-500 to-rose-400",
@@ -26,7 +26,7 @@ const mindkeys = [
     description: "Forged in dragon fire and chaos.",
   },
   {
-    name: "Ethereal Key",
+    name: "Gamma MindKey",
     image: mindkey3,
     element: "Spirit",
     color: "from-secondary to-energy-purple",
@@ -34,7 +34,7 @@ const mindkeys = [
     description: "Whispers from the void between worlds.",
   },
   {
-    name: "Radiant Key",
+    name: "Shadow MindKey",
     image: mindkey4,
     element: "Light",
     color: "from-accent to-amber-400",

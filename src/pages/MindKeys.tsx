@@ -7,25 +7,25 @@ import mindkeysImg from "@/assets/mindkeys.webp";
 
 const mindkeys = [
   {
-    name: "MindKey of Resonance",
+    name: "Alpha MindKey",
     number: 1,
     description: "The first shard, found deep within Dyna World's crystal caverns. It attunes to the wielder's emotional frequency, amplifying their connection to cosmic energy. Forms the gauntlets of the celestial battle-suit.",
     effect: "Enhances emotional attunement and energy sensing",
   },
   {
-    name: "MindKey of Convergence",
+    name: "Beta MindKey",
     number: 2,
     description: "Hidden in the temporal spirals of Mysterium Tremendum. This key bends probability, allowing the wielder to see branching timelines. Forms the chest plate of the battle-suit.",
     effect: "Grants temporal awareness and probability sight",
   },
   {
-    name: "MindKey of Ascension",
+    name: "Gamma MindKey",
     number: 3,
     description: "Guarded by ancient constructs in BOONKA! Land's floating citadels. It channels gravitational forces, granting flight and telekinesis. Forms the boots of the celestial battle-suit.",
     effect: "Unlocks gravitational manipulation and flight",
   },
   {
-    name: "MindKey of Dominion",
+    name: "Shadow MindKey",
     number: 4,
     description: "The final and most dangerous shard, sealed on Future Earth. It unifies all other MindKeys into the completed battle-suit. But its true purpose is far darker than anyone imagined…",
     effect: "Completes the battle-suit — and the ritual",
