@@ -4,7 +4,6 @@ import PreregistrationCounter from "@/components/PreregistrationCounter";
 import GameWorldsSection from "@/components/GameWorldsSection";
 import CharactersPreview from "@/components/CharactersPreview";
 import GameplayFeatures from "@/components/GameplayFeatures";
-import SkillsShowcase from "@/components/SkillsShowcase";
 import MindKeysShowcase from "@/components/MindKeysShowcase";
 import LoreTrailerSection from "@/components/LoreTrailerSection";
 import CTASection from "@/components/CTASection";
@@ -22,7 +21,6 @@ const Index = () => {
         <GameWorldsSection />
         <CharactersPreview />
         <GameplayFeatures />
-        <SkillsShowcase />
         <MindKeysShowcase />
         <CTASection />
         <Footer />
