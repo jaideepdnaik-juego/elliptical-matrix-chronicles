@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Flame, Zap, TrendingUp, Users } from "lucide-react";
+import { Flame, Zap, TrendingUp, Users, Sparkles } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const PreregistrationCounter = () => {
   const [displayCount, setDisplayCount] = useState(0);
@@ -158,6 +159,24 @@ const PreregistrationCounter = () => {
               <p className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</p>
             </div>
           ))}
+        </motion.div>
+
+        {/* Pre-Register Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <Link
+            to="/pre-register"
+            className="group inline-flex items-center gap-3 px-10 py-4 font-display text-sm tracking-widest uppercase bg-gradient-to-r from-primary via-neon-cyan to-primary text-primary-foreground rounded-xl hover:shadow-[0_0_50px_hsl(var(--primary)/0.6)] transition-all duration-300 glow-border hover:scale-105 font-bold"
+          >
+            <Sparkles className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+            Pre-Register Now
+            <Sparkles className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>

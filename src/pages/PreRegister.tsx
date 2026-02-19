@@ -3,7 +3,7 @@ import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
-import { Mail, Sparkles } from "lucide-react";
+import { Mail, Sparkles, X } from "lucide-react";
 
 interface PreRegisterProps {
   onRegisterComplete: () => void;
@@ -251,15 +251,26 @@ const PreRegister = ({ onRegisterComplete }: PreRegisterProps) => {
 
         {/* Footer text */}
         {!showSuccess && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="text-center mt-6 mb-4 text-xs text-muted-foreground"
-          >
-            By registering, you agree to receive updates about Elliptical
-            Matrix
-          </motion.p>
+          <>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="text-center mt-6 text-xs text-muted-foreground"
+            >
+              By registering, you agree to receive updates about Elliptical
+              Matrix
+            </motion.p>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.3 }}
+              onClick={onRegisterComplete}
+              className="block mx-auto mt-4 mb-4 text-sm text-muted-foreground hover:text-primary transition-colors duration-300 underline underline-offset-4 hover:underline-offset-8"
+            >
+              Skip for now
+            </motion.button>
+          </>
         )}
       </motion.div>
     </div>
