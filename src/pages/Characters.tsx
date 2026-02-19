@@ -8,6 +8,10 @@ import akiraImg from "@/assets/characters/Akira.webp";
 import iboonkaImg from "@/assets/characters/iBoonka.webp";
 import kurtImg from "@/assets/characters/Kurt.webp";
 import poojaImg from "@/assets/characters/Pooja.webp";
+import telekinesisImg from "@/assets/Skills/telekinesis.webp";
+import thunderImg from "@/assets/Skills/thunderEnergy blast.webp";
+import earthquakeImg from "@/assets/Skills/earthquake stomp.webp";
+import ultimateImg from "@/assets/Skills/ultimate.webp";
 
 const characters = [
   {
@@ -17,37 +21,13 @@ const characters = [
     description:
       "The fearless blue-skinned alien who leads the JUMP Strings! With cosmic antennae that sense dimensional rifts and a MindKey crystal embedded in his chest, iBOONKA! channels raw celestial energy. His sunglasses aren't just cool — they filter hyperdimensional light that would blind ordinary beings.",
     abilities: [
-      "Dimensional Sensing",
-      "Energy Channeling",
-      "Team-Strength Amplification",
+      { src: telekinesisImg, name: "Telekinesis" },
+      { src: thunderImg, name: "Thunderclap Energy Blast" },
+      { src: earthquakeImg, name: "Earthquake Stomp" },
+      { src: ultimateImg, name: "Cosmic Slam" },
     ],
     world: "BOONKA! Land",
-  },
-  {
-    name: "Akira",
-    image: akiraImg,
-    role: "Energy Channeler",
-    description:
-      "A brilliant warrior from Future Earth, Akira wields spiral energy through her crystalline armor. Her pink boots generate anti-gravity fields, and her shoulder plates act as energy conductors that can redirect any attack. She's the team's tactical genius.",
-    abilities: [
-      "Spiral Energy Control",
-      "Anti-Gravity Generation",
-      "Tactical Analysis",
-    ],
-    world: "Future Earth",
-  },
-  {
-    name: "Kurt",
-    image: kurtImg,
-    role: "Shield Guardian",
-    description:
-      "Earth's strongest defender, Kurt's green boots root him to any planetary core, making him immovable. His vest channels nature's energy across all four worlds. A kind heart behind incredible strength — Kurt protects the team at any cost.",
-    abilities: [
-      "Planetary Anchoring",
-      "Nature Force Channeling",
-      "Impenetrable Defense",
-    ],
-    world: "Dyna World",
+    available: true,
   },
   {
     name: "Pooja",
@@ -56,11 +36,32 @@ const characters = [
     description:
       "The youngest but most powerful mystic of the group, Pooja's oversized eyes see across all dimensions simultaneously. Her golden Oracle pendant lets her communicate with ancient cosmic entities. She guides the CTV Najja Starship through impossible routes.",
     abilities: [
-      "Dimensional Sight",
-      "Oracle Communication",
-      "Starship Navigation",
+      { src: telekinesisImg, name: "Telekinesis" },
+      { src: thunderImg, name: "Hyper Beam (Furoo Assist)" },
+      { src: ultimateImg, name: "Cosmic Rattle Burst" },
     ],
     world: "Mysterium Tremendum",
+    available: true,
+  },
+  {
+    name: "Akira",
+    image: akiraImg,
+    role: "Energy Channeler",
+    description:
+      "A brilliant warrior from Future Earth, Akira wields spiral energy through her crystalline armor. Her pink boots generate anti-gravity fields, and her shoulder plates act as energy conductors that can redirect any attack. She's the team's tactical genius.",
+    abilities: [],
+    world: "Future Earth",
+    available: false,
+  },
+  {
+    name: "Kurt",
+    image: kurtImg,
+    role: "Shield Guardian",
+    description:
+      "Earth's strongest defender, Kurt's green boots root him to any planetary core, making him immovable. His vest channels nature's energy across all four worlds. A kind heart behind incredible strength — Kurt protects the team at any cost.",
+    abilities: [],
+    world: "Dyna World",
+    available: false,
   },
 ];
 
@@ -120,11 +121,31 @@ const CharacterDetail = ({
             transition={{ repeat: Infinity, duration: 4, delay: index * 0.5 }}
             className="absolute inset-0 rounded-full bg-primary/10 blur-3xl"
           />
-          <img
-            src={char.image}
-            alt={char.name}
-            className="relative h-[350px] md:h-[450px] w-auto object-contain drop-shadow-[0_0_30px_hsl(190_100%_50%/0.3)]"
-          />
+          <div className="relative">
+            <img
+              src={char.image}
+              alt={char.name}
+              className={`relative h-[350px] md:h-[450px] w-auto object-contain drop-shadow-[0_0_30px_hsl(190_100%_50%/0.3)] ${
+                !char.available ? 'opacity-30 grayscale' : ''
+              }`}
+            />
+            {/* Coming Soon Badge */}
+            {!char.available && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                <div className="px-6 py-3 md:px-8 md:py-4 rounded-xl bg-glass-strong border-2 border-accent/50 glow-border-gold">
+                  <p className="font-display text-xl md:text-3xl text-accent text-glow-gold tracking-wider uppercase">
+                    Coming Soon
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </div>
         </motion.div>
       </div>
 
@@ -152,25 +173,40 @@ const CharacterDetail = ({
           <p className="text-muted-foreground mb-6 leading-relaxed">
             {char.description}
           </p>
-          <div>
-            <p className="font-display text-sm tracking-[0.2em] uppercase text-foreground/60 mb-3">
-              Abilities
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {char.abilities.map((a, ai) => (
-                <motion.span
-                  key={a}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 + ai * 0.1 }}
-                  className="px-3 py-1 text-sm font-body bg-primary/10 text-primary rounded-full glow-border"
-                >
-                  {a}
-                </motion.span>
-              ))}
+          {char.available && char.abilities.length > 0 && (
+            <div>
+              <p className="font-display text-sm tracking-[0.2em] uppercase text-foreground/60 mb-3">
+                Abilities
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {char.abilities.map((ability, ai) => (
+                  <motion.div
+                    key={ability.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 + ai * 0.1 }}
+                    className="group relative"
+                  >
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-glass-strong p-3 glow-border hover:glow-border-gold transition-all duration-300 hover:scale-105">
+                      <img
+                        src={ability.src}
+                        alt={ability.name}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                      <div className="bg-glass-strong px-3 py-1 rounded-lg border border-primary/30">
+                        <span className="text-xs font-display text-primary uppercase tracking-wider">
+                          {ability.name}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </motion.div>
       </div>
     </motion.div>
