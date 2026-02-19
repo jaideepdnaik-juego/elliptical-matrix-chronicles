@@ -175,34 +175,33 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <MagneticButton className="group inline-flex items-center justify-center gap-3 px-10 py-4 font-display text-sm tracking-widest uppercase bg-gradient-to-r from-primary to-neon-cyan text-primary-foreground rounded-xl hover:shadow-[0_0_50px_hsl(var(--primary)/0.5)] transition-all duration-300 glow-border font-bold">
-            <Smartphone className="w-5 h-5" />
-            Google Play
-          </MagneticButton>
-          <MagneticButton className="group inline-flex items-center justify-center gap-3 px-10 py-4 font-display text-sm tracking-widest uppercase bg-foreground/10 text-foreground rounded-xl border border-foreground/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300">
-            <Download className="w-5 h-5" />
-            App Store
-          </MagneticButton>
-          <MagneticButton
-            as="a"
-            href="#trailer"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 font-display text-sm tracking-widest uppercase glow-border-purple bg-secondary/10 text-secondary rounded-xl hover:bg-secondary/20 transition-all duration-300"
+          <MagneticButton 
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-black text-white rounded-xl hover:bg-black/90 transition-all duration-300 hover:scale-105 border border-white/20 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
+            aria-label="Get it on Google Play"
           >
-            <Play className="w-4 h-4" />
-            Watch Gameplay
+            <div className="flex flex-col items-start">
+              <span className="text-[10px] uppercase tracking-wide opacity-80">Get it on</span>
+              <div className="flex items-center gap-2">
+                <Smartphone className="w-5 h-5" />
+                <span className="font-display text-lg font-bold tracking-wide">Google Play</span>
+              </div>
+            </div>
+          </MagneticButton>
+          <MagneticButton 
+            className="group inline-flex items-center gap-3 px-6 py-3 bg-black text-white rounded-xl hover:bg-black/90 transition-all duration-300 hover:scale-105 border border-white/20 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
+            aria-label="Download on the App Store"
+          >
+            <div className="flex flex-col items-start">
+              <span className="text-[10px] uppercase tracking-wide opacity-80">Download on the</span>
+              <div className="flex items-center gap-2">
+                <Download className="w-5 h-5" />
+                <span className="font-display text-lg font-bold tracking-wide">App Store</span>
+              </div>
+            </div>
           </MagneticButton>
         </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-primary/40"
-      >
-        <ChevronDown size={32} />
       </motion.div>
     </section>
   );
