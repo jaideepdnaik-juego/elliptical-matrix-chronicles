@@ -284,8 +284,8 @@ const CharactersPreview = () => {
 
           {/* Orbiting ability icons - Only for available characters */}
           {characters[currentCharacter].available && abilityIcons.map((ability, i) => {
-            const radius = 190;
-            const mdRadius = 250;
+            const radius = 205; // Between inner (190) and outer (220) circles
+            const mdRadius = 267; // Between inner (250) and outer (285) circles
             return (
               <motion.div
                 key={ability.name}
