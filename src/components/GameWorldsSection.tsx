@@ -67,6 +67,9 @@ const GameWorldsSection = () => {
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-secondary" />
           </motion.div>
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent mb-3">
+            Traverse Connected Worlds
+          </h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

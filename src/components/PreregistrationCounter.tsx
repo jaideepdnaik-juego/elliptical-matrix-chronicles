@@ -62,13 +62,16 @@ const PreregistrationCounter = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="flex items-center justify-center gap-2 mb-2">
             <Flame className="w-5 h-5 text-accent" />
             <p className="font-display text-sm md:text-base uppercase text-accent tracking-[0.4em] text-glow-gold">
               Join the Movement
             </p>
             <Flame className="w-5 h-5 text-accent" />
           </div>
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-accent via-golden-energy to-accent bg-clip-text text-transparent mb-8 text-glow-gold">
+            Become an Oracle
+          </h2>
 
           {/* Counter display */}
           <div className="relative inline-block mb-6">

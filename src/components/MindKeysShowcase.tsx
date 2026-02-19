@@ -66,6 +66,9 @@ const MindKeysShowcase = () => {
             </p>
             <Crown className="w-5 h-5 text-accent" />
           </motion.div>
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-accent via-golden-energy to-accent bg-clip-text text-transparent mb-3 text-glow-gold">
+            The MINDKEYS™
+          </h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

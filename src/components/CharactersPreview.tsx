@@ -175,6 +175,9 @@ const CharactersPreview = () => {
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary" />
           </motion.div>
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-primary via-neon-cyan to-secondary bg-clip-text text-transparent mb-3">
+            Choose Your Champion
+          </h2>
         </div>
 
         {/* Center character with orbiting abilities */}

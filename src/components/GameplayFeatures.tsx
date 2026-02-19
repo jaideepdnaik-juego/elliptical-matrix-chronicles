@@ -58,6 +58,9 @@ const GameplayFeatures = () => {
             </p>
             <div className="h-px w-8 bg-gradient-to-l from-transparent to-accent" />
           </motion.div>
+          <h2 className="font-display text-4xl md:text-6xl font-black bg-gradient-to-r from-accent via-golden-energy to-accent bg-clip-text text-transparent mb-3">
+            Gameplay Features
+          </h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
