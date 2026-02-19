@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import TextReveal from "./TextReveal";
 
 import iboonkaImg from "@/assets/characters/iBoonka.webp";
@@ -160,6 +161,7 @@ const CharactersPreview = () => {
     return () => window.removeEventListener('keydown', handleArrowKeys);
   }, [selectedAbility]);
   return (
+    <>
     <section
       id="characters"
       className="section-padding relative overflow-hidden"
@@ -348,76 +350,79 @@ const CharactersPreview = () => {
             );
           })}
         </motion.div>
-
-        {/* Ability Description Panel */}
-        <AnimatePresence>
-          {selectedAbility !== null && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={handleClose}
-                className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
-              />
-              
-              {/* Description Panel */}
-              <motion.div
-                initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: 50, scale: 0.95 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-sm md:max-w-md"
-              >
-                <div className="relative bg-glass-strong rounded-2xl p-6 border border-primary/30 shadow-2xl">
-                  {/* Close button */}
-                  <button
-                    onClick={handleClose}
-                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg bg-muted/30 hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-
-                  {/* Ability Icon */}
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-xl bg-glass p-3 glow-border-gold shrink-0">
-                      <img
-                        src={currentAbilities[selectedAbility].src}
-                        alt={currentAbilities[selectedAbility].name}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-display text-base md:text-lg text-primary tracking-wider mb-1 truncate">
-                        {currentAbilities[selectedAbility].name}
-                      </h3>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30">
-                          {currentAbilities[selectedAbility].type}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          CD: {currentAbilities[selectedAbility].cooldown}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-sm text-foreground/80 leading-relaxed">
-                    {currentAbilities[selectedAbility].description}
-                  </p>
-
-                  {/* Decorative glow */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-accent via-primary to-secondary rounded-2xl opacity-20 blur -z-10 animate-pulse-glow" />
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
       </div>
     </section>
+    {/* Ability Description Panel - Rendered as Portal */}
+    {createPortal(
+      <AnimatePresence>
+        {selectedAbility !== null && currentAbilities[selectedAbility] && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={handleClose}
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+            />
+            
+            {/* Description Panel */}
+            <motion.div
+              initial={{ opacity: 0, x: 50, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 50, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 w-[calc(100%-2rem)] max-w-sm md:max-w-md"
+            >
+              <div className="relative bg-glass-strong rounded-2xl p-6 border border-primary/30 shadow-2xl">
+                {/* Close button */}
+                <button
+                  onClick={handleClose}
+                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-lg bg-muted/30 hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+
+                {/* Ability Icon */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-xl bg-glass p-3 glow-border-gold shrink-0">
+                    <img
+                      src={currentAbilities[selectedAbility].src}
+                      alt={currentAbilities[selectedAbility].name}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-base md:text-lg text-primary tracking-wider mb-1 truncate">
+                      {currentAbilities[selectedAbility].name}
+                    </h3>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30">
+                        {currentAbilities[selectedAbility].type}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        CD: {currentAbilities[selectedAbility].cooldown}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-foreground/80 leading-relaxed">
+                  {currentAbilities[selectedAbility].description}
+                </p>
+
+                {/* Decorative glow */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-accent via-primary to-secondary rounded-2xl opacity-20 blur -z-10 animate-pulse-glow" />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>,
+      document.body
+    )}
+    </>
   );
 };
 
