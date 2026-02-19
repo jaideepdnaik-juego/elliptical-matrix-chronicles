@@ -14,13 +14,7 @@ const worlds = [
     tagline: "A vibrant world where gravity defies logic and ancient constructs guard celestial power.",
     color: "from-amber-400 to-orange-500",
     glowHsl: "30 100% 55%",
-  },
-  {
-    name: "California City",
-    image: californiaCityImg,
-    tagline: "Modern metropolis meets mystical energy. Where technology and magic intertwine.",
-    color: "from-primary to-neon-cyan",
-    glowHsl: "193 100% 65%",
+    comingSoon: false,
   },
   {
     name: "China City",
@@ -28,6 +22,15 @@ const worlds = [
     tagline: "Ancient wisdom flows through neon-lit streets. Tradition meets the future.",
     color: "from-secondary to-energy-purple",
     glowHsl: "249 100% 71%",
+    comingSoon: false,
+  },
+  {
+    name: "California City",
+    image: californiaCityImg,
+    tagline: "Modern metropolis meets mystical energy. Where technology and magic intertwine.",
+    color: "from-primary to-neon-cyan",
+    glowHsl: "193 100% 65%",
+    comingSoon: true,
   },
   {
     name: "Dyna World",
@@ -35,6 +38,7 @@ const worlds = [
     tagline: "Crystal caverns pulse with cosmic energy. The birthplace of the first MindKey.",
     color: "from-primary to-blue-500",
     glowHsl: "210 100% 60%",
+    comingSoon: true,
   },
 ];
 
@@ -104,11 +108,22 @@ const GameWorldsSection = () => {
                   <motion.img
                     src={world.image}
                     alt={world.name}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${world.comingSoon ? 'opacity-40 grayscale' : ''}`}
                     whileHover={{ scale: 1.08 }}
                     transition={{ duration: 0.6 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                  
+                  {/* Coming Soon Badge */}
+                  {world.comingSoon && (
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                      <div className="px-6 py-3 md:px-8 md:py-4 rounded-xl bg-glass-strong border-2 border-accent/50 glow-border-gold">
+                        <p className="font-display text-xl md:text-2xl text-accent text-glow-gold tracking-wider uppercase whitespace-nowrap">
+                          Coming Soon
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Content overlay */}
