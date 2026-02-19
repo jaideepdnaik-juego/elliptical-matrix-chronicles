@@ -61,15 +61,19 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Cinematic Background */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <img
-          src={"./assets/hero-cinematic.webp"}
-          alt=""
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-        {/* Deep overlays for depth - improved fade */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
-        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-background via-background/95 to-transparent" />
+        >
+          <source src={"./assets/Elliptical_Matrix_Intro - Trim.mp4"} type="video/mp4" />
+        </video>
+        {/* Deep overlays for depth - more faded to show video */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40" />
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-background via-background/90 to-transparent" />
 
         {/* Animated energy orbs */}
         <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-float-orb" />
@@ -125,13 +129,13 @@ const HeroSection = () => {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
+          <h1 className="font-display text-2xl md:text-4xl lg:text-5xl font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
             ENTER THE
           </h1>
           <motion.img
             src={"./assets/Elliptical Matrix_Title 1.webp"}
             alt="Elliptical Matrix"
-            className="w-[80%] max-w-3xl h-auto object-contain"
+            className="w-[60%] max-w-2xl h-auto object-contain"
             style={{
               filter: 'drop-shadow(0 0 30px hsl(var(--primary)/0.8)) drop-shadow(0 0 60px hsl(var(--glow-cyan)/0.6)) drop-shadow(0 0 90px hsl(var(--glow-blue)/0.4))',
             }}
