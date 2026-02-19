@@ -3,6 +3,7 @@ import { ChevronDown, Sparkles, Play, Smartphone, Download } from "lucide-react"
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";
 import heroBg from "@/assets/hero-cinematic.webp";
+import logoImg from "@/assets/Elliptical Matrix_Title 1.webp";
 
 // Floating ability icon component
 const FloatingIcon = ({
@@ -117,7 +118,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="mb-6"
+          className="mb-6 flex flex-col items-center justify-center gap-3"
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{
@@ -126,9 +127,29 @@ const HeroSection = () => {
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
         >
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
-            ENTER THE ELLIPTICAL MATRIX
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-wider text-glow-cyan bg-gradient-to-r from-primary via-neon-cyan to-primary bg-clip-text text-transparent leading-tight">
+            ENTER THE
           </h1>
+          <motion.img
+            src={logoImg}
+            alt="Elliptical Matrix"
+            className="w-[80%] max-w-3xl h-auto object-contain"
+            style={{
+              filter: 'drop-shadow(0 0 30px hsl(var(--primary)/0.8)) drop-shadow(0 0 60px hsl(var(--glow-cyan)/0.6)) drop-shadow(0 0 90px hsl(var(--glow-blue)/0.4))',
+            }}
+            animate={{
+              filter: [
+                'drop-shadow(0 0 30px hsl(var(--primary)/0.8)) drop-shadow(0 0 60px hsl(var(--glow-cyan)/0.6)) drop-shadow(0 0 90px hsl(var(--glow-blue)/0.4))',
+                'drop-shadow(0 0 40px hsl(var(--primary)/1)) drop-shadow(0 0 80px hsl(var(--glow-cyan)/0.8)) drop-shadow(0 0 120px hsl(var(--glow-blue)/0.6))',
+                'drop-shadow(0 0 30px hsl(var(--primary)/0.8)) drop-shadow(0 0 60px hsl(var(--glow-cyan)/0.6)) drop-shadow(0 0 90px hsl(var(--glow-blue)/0.4))',
+              ],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
         </motion.div>
 
         <motion.p
